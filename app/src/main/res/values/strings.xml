@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TanyaKampus</string>
+    <string name="landing_page_register">register</string>
+    <string name="landing_page_login">login</string>
+    <string name="kampus">kampus ?</string>
+    <string name="tanya">Tanya</string>
+    <string name="next">next</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
