@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intentMain = new Intent( LoginActivity.this, LoginPasswordActivity.class);
                 intentMain.putExtra("username", inputText.getText().toString());
                 startActivity(intentMain);
+                finish();
             } else {
                 Toast.makeText(getApplicationContext(), "Silakan lengkapi data", Toast.LENGTH_LONG).show();
             }

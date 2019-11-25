@@ -3,4 +3,17 @@
     <color name="colorPrimary">#04CEFA</color>
     <color name="colorPrimaryDark">#04CEFA</color>
     <color name="colorAccent">#04CEFA</color>
+
+
+    <color name="colorItemNavigation">#0A4452</color>
+    <color name="colorItemSelector">#0E31C2</color>
+
+
+    <color name="red">#FD0000</color>
+    <color name="black">#000000</color>
+    <color name="green">#004908</color>
+    <color name="blue">#0038FD</color>
+
+
+
 </resources>

@@ -12,13 +12,13 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.RegisterPasswordActivity"></activity>
+        <activity android:name=".activities.RegisterPasswordActivity"/>
         <activity android:name=".activities.RegisterNameActivity" />
         <activity android:name=".activities.LandingPage" />
         <activity android:name=".activities.LoginPasswordActivity" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.SplashScreenActivity">
+        <activity android:name=".activities.LoginActivity"  />
+        <activity android:name=".activities.MainActivity" android:noHistory="true"/>
+        <activity android:name=".activities.SplashScreenActivity" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -19,21 +19,15 @@ public class LandingPage extends AppCompatActivity {
         buttonLogin = findViewById(R.id.button_landing_page_login);
         buttonRegister = findViewById(R.id.button_landing_page_register);
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View login) {
-                Intent intentLogin = new Intent(LandingPage.this, LoginActivity.class);
-                LandingPage.this.startActivity(intentLogin);
-            }
+        buttonLogin.setOnClickListener(login -> {
+            Intent intentLogin = new Intent(LandingPage.this, LoginActivity.class);
+            LandingPage.this.startActivity(intentLogin);
         });
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View login) {
-                Intent intentLogin = new Intent(LandingPage.this, LoginActivity.class);
-                LandingPage.this.startActivity(intentLogin);
+        buttonRegister.setOnClickListener(login -> {
+            Intent intentLogin = new Intent(LandingPage.this, RegisterNameActivity.class);
+            LandingPage.this.startActivity(intentLogin);
 
-            }
         });
 
 
