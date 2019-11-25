@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.RegisterNameActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout_landing_page_background"
+        android:id="@+id/constraintLayout_register_background"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView_login"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView_register"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="27dp">
@@ -21,20 +21,20 @@
             android:layout_width="209dp"
             android:layout_height="187dp"
             android:src="@drawable/logo"
-            app:layout_constraintBottom_toTopOf="@+id/text_view_landing_page_kampus"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.436" />
 
         <ImageView
-            android:id="@+id/text_view_landing_page_kampus"
+            android:id="@+id/text_view_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="200dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/one_step_closer"
+            android:src="@drawable/tanya_kampus"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -42,9 +42,9 @@
     </android.support.constraint.ConstraintLayout>
 
     <ScrollView
-        android:id="@+id/scrollView_login"
+        android:id="@+id/scrollView_register"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="210dp"
         android:fillViewport="true"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,28 +53,53 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout_landing_page_button"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="210dp"
             android:background="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHeight_percent="0.12">
 
             <EditText
-                android:id="@+id/editText_login"
+                android:id="@+id/editText_register_email"
                 android:layout_width="350dp"
                 android:layout_height="60dp"
-                android:layout_marginBottom="12dp"
-                android:hint="please input your username"
-                android:textAlignment="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="31dp"
+                android:layout_marginBottom="4dp"
                 android:background="@drawable/rounded_button_login"
-                app:layout_constraintBottom_toTopOf="@+id/button_login_next"
-                app:layout_constraintEnd_toEndOf="@+id/button_login_next"
-                app:layout_constraintStart_toStartOf="@+id/button_login_next">
+                android:hint="@string/please_input_your_name"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/button_register_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText_register_name">
+
             </EditText>
-            <Button
-                android:id="@+id/button_login_next"
+
+            <EditText
+                android:id="@+id/editText_register_name"
                 android:layout_width="350dp"
                 android:layout_height="60dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="31dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/rounded_button_login"
+                android:hint="@string/please_input_your_name"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/button_register_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText_register_email">
+
+            </EditText>
+
+            <Button
+                android:id="@+id/button_register_name"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 android:background="@drawable/rounded_button_register"
                 android:fontFamily="sans-serif-black"
                 android:text="@string/next"
@@ -82,15 +107,13 @@
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.918">
-            </Button>
+                app:layout_constraintTop_toBottomOf="@+id/editText_register_name">
 
+            </Button>
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
-
-
 
 </android.support.constraint.ConstraintLayout>
