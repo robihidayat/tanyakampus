@@ -4,7 +4,7 @@ apply plugin: 'com.android.application'
 ext.majorVersion = 1
 ext.minorVersion = 2
 ext.patchVersion = 3
-ext.preRelease= "DEMO"
+ext.preRelease = "DEMO"
 
 ext.minSdkVersion = 24
 
@@ -19,6 +19,7 @@ private String generateVersionName() {
     }
     return versionName
 }
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -33,6 +34,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "domain", "\"https://admin.campusin.id/\"")
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "domain", "\"https://admin.campusin.id/\"")
         }
     }
     compileOptions {

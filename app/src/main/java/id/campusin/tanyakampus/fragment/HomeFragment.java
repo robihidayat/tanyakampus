@@ -40,26 +40,26 @@ public class HomeFragment extends Fragment {
         List<Movie> movies = new ArrayList<>();
         movies.add(new Movie("test ", false, "robi hidayat", "string", IntStream.iterate(10, x -> x + 10).limit(5)
                 .boxed()
-                .collect(Collectors.toList()) ,1, "sas",
-                "sas","sas", "sas",
+                .collect(Collectors.toList()) ,1, "Universitas Gadjah Mada",
+                "sas","Universitas Gadjah Mada", "sas",
                 1.2, 1,
                 false, 0.0 ));
         movies.add(new Movie("test path", false, "lah iya", "string", IntStream.iterate(10, x -> x + 10).limit(5)
                 .boxed()
-                .collect(Collectors.toList()) ,1, "sas",
-                "sas","sas", "sas",
+                .collect(Collectors.toList()) ,1, "Institute Teknologi Bandung",
+                "sas","Institute Teknologi Bandung", "sas",
                 1.2, 1,
                 false, 0.0 ));
         movies.add(new Movie("test path", false, "coba test", "string", IntStream.iterate(10, x -> x + 10).limit(5)
                 .boxed()
-                .collect(Collectors.toList()) ,1, "sas",
-                "sas","sas", "sas",
+                .collect(Collectors.toList()) ,1, "Universitas Indonesia",
+                "sas","Universitas Indonesia", "sas",
                 1.2, 1,
                 false, 0.0 ));
         movies.add(new Movie("test path", false, "sembakp", "string", IntStream.iterate(10, x -> x + 10).limit(5)
                 .boxed()
-                .collect(Collectors.toList()) ,1, "sas",
-                "sas","sas", "sas",
+                .collect(Collectors.toList()) ,1, "Universitas Padjajaran",
+                "sas","Universitas Padjajaran", "sas",
                 1.2, 1,
                 false, 0.0 ));
         movies.add(new Movie("test path", false, "test aja", "string", IntStream.iterate(10, x -> x + 10).limit(5)

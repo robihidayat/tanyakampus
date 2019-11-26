@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toBottomOf="@+id/ConstraintLayout_bottom_nav"
+        app:layout_constraintBottom_toTopOf="@+id/ConstraintLayout_bottom_nav"
         app:layout_constraintEnd_toEndOf="@+id/ConstraintLayout_bottom_nav"
         app:layout_constraintStart_toStartOf="@+id/ConstraintLayout_bottom_nav"
         app:layout_constraintTop_toTopOf="parent" />
