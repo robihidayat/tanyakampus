@@ -1,46 +1,45 @@
 package id.campusin.tanyakampus.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import id.campusin.tanyakampus.R;
-import id.campusin.tanyakampus.model.Movie;
+import id.campusin.tanyakampus.activities.DetailUniversityActivity;
+import id.campusin.tanyakampus.model.UniversityModel;
 
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
+public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<Movie> movieList;
+    private List<UniversityModel> movieList;
 
 
-    public MovieAdapter(Context mContext, List<Movie> movieList){
+    public UniversityAdapter(Context mContext, List<UniversityModel> movieList){
         this.mContext = mContext;
         this.movieList = movieList;
     }
 
     @Override
-    public MovieAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
+    public UniversityAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.movie_card, viewGroup, false);
+                .inflate(R.layout.university_card, viewGroup, false);
 
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final MovieAdapter.MyViewHolder viewHolder, int i){
-        viewHolder.title.setText(movieList.get(i).getOriginalTitle());
-        String vote = Double.toString(movieList.get(i).getVoteAverage());
-
+    public void onBindViewHolder(final UniversityAdapter.MyViewHolder viewHolder, int i){
+        viewHolder.title.setText(movieList.get(i).getTitle());
         String poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQr6-IcoaRHEXBo9LDgZ18uE9digJnQ6ytuJ-a0Gjh89tbhjwiX" ; //+ movieList.get(i).getPosterPath()
 
         Glide.with(mContext)
@@ -66,13 +65,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
             view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION){
-                    Movie clickedDataItem = movieList.get(pos);
-                   /* Intent intent = new Intent(mContext, DetailActivity.class);
-                    intent.putExtra("movies", clickedDataItem );
+                    UniversityModel clickedDataItem = movieList.get(pos);
+                    Intent intent = new Intent(mContext, DetailUniversityActivity.class);
+                    intent.putExtra("universityModel", clickedDataItem );
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mContext.startActivity(intent);
-                    */
-                    Toast.makeText(v.getContext(), "You clicked " + clickedDataItem.getOriginalTitle(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

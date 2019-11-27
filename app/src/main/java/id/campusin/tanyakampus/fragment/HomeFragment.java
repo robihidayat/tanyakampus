@@ -12,14 +12,12 @@ import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.adapter.DepartmentAdapter;
-import id.campusin.tanyakampus.adapter.MovieAdapter;
+import id.campusin.tanyakampus.adapter.UniversityAdapter;
 import id.campusin.tanyakampus.model.DepartmentModel;
-import id.campusin.tanyakampus.model.Movie;
+import id.campusin.tanyakampus.model.UniversityModel;
 
 public class HomeFragment extends Fragment {
 
@@ -38,7 +36,7 @@ public class HomeFragment extends Fragment {
         departmentRecyclerView.setLayoutManager(departmentManager);
         departmentRecyclerView.setAdapter(departmentAdapter);
 
-        MovieAdapter firstAdapter = new MovieAdapter(getContext(), getMovie());
+        UniversityAdapter firstAdapter = new UniversityAdapter(getContext(), getUniversity());
         MultiSnapRecyclerView firstRecyclerView = view.findViewById(R.id.recycler_view_university);
         LinearLayoutManager firstManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         firstRecyclerView.setLayoutManager(firstManager);
@@ -67,40 +65,15 @@ public class HomeFragment extends Fragment {
         return models;
     }
 
-    private List<Movie> getMovie(){
-        List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("test ", false, "robi hidayat", "string", IntStream.iterate(10, x -> x + 10).limit(5)
-                .boxed()
-                .collect(Collectors.toList()) ,1, "Universitas Gadjah Mada",
-                "sas","Universitas Gadjah Mada", "sas",
-                1.2, 1,
-                false, 0.0 ));
-        movies.add(new Movie("test path", false, "lah iya", "string", IntStream.iterate(10, x -> x + 10).limit(5)
-                .boxed()
-                .collect(Collectors.toList()) ,1, "Institute Teknologi Bandung",
-                "sas","Institute Teknologi Bandung", "sas",
-                1.2, 1,
-                false, 0.0 ));
-        movies.add(new Movie("test path", false, "coba test", "string", IntStream.iterate(10, x -> x + 10).limit(5)
-                .boxed()
-                .collect(Collectors.toList()) ,1, "Universitas Indonesia",
-                "sas","Universitas Indonesia", "sas",
-                1.2, 1,
-                false, 0.0 ));
-        movies.add(new Movie("test path", false, "sembakp", "string", IntStream.iterate(10, x -> x + 10).limit(5)
-                .boxed()
-                .collect(Collectors.toList()) ,1, "Universitas Padjajaran",
-                "sas","Universitas Padjajaran", "sas",
-                1.2, 1,
-                false, 0.0 ));
-        movies.add(new Movie("test path", false, "test aja", "string", IntStream.iterate(10, x -> x + 10).limit(5)
-                .boxed()
-                .collect(Collectors.toList()) ,1, "sas",
-                "sas","sas", "sas",
-                1.2, 1,
-                false, 0.0 ));
-
-        return movies;
+    private List<UniversityModel> getUniversity(){
+        List<UniversityModel> university = new ArrayList<>();
+        String description = "Universitas ini adalah universitas yang sayang bagus sekali, tapi sampai bagusnya saya sampai tidak tahu harus berkata apa" +
+                "semoga kedepannya";
+        university.add(new UniversityModel("foto", "Ilmu Komputer", 1, description));
+        university.add(new UniversityModel("foto", "Elektronika Instrumentasi", 2,description));
+        university.add(new UniversityModel("foto", "TETI", 2,description));
+        university.add(new UniversityModel("foto", "ILKOM", 2,description));
+        return university;
     }
 
 }
