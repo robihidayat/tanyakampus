@@ -16,9 +16,9 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/menu_action_search"
+        android:id="@+id/menu_action_ambassador"
         android:icon="@drawable/ic_action_search"
-        android:title="Search"
+        android:title="Ambassador"
         app:showAsAction="always" />
 
     <item

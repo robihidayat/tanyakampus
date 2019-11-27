@@ -12,99 +12,163 @@
         android:id="@+id/toolbar_fragment_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorItemNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/colorItemNavigation"
         app:layout_constraintTop_toTopOf="parent">
         <EditText
-            android:background="@drawable/rounded_search_toolbar"
             android:id="@+id/editText_toolbar_search"
             android:layout_width="360dp"
+            android:layout_height="40dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:textAlignment="inherit"
-            android:layout_height="40dp">
-        </EditText>
-
+            android:hint="Search"
+            android:textColorHint="@color/black"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/rounded_search_toolbar"
+            android:textAlignment="inherit"/>
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
-        android:id="@+id/scrollView_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment_home">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar_fragment_home"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_fragment_home"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment_home"
+        app:layout_constraintVertical_bias="1.0">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar_fragment_home"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/toolbar_fragment_home"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment_home"
+            app:layout_constraintVertical_bias="0.0">
 
             <ImageView
-                android:paddingRight="16dp"
-                android:paddingLeft="16dp"
                 android:id="@+id/imageView_title_university"
                 android:layout_width="186dp"
                 android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:src="@drawable/title_hot_universities"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.071"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
-                android:id="@+id/first_recycler_view"
+                android:id="@+id/recycler_view_university"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_title_university"
+                app:layout_constraintStart_toStartOf="@+id/imageView_title_university"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_title_university"
                 app:msrv_gravity="start"
                 app:msrv_ms_per_inch="@dimen/normal_speed"
                 app:msrv_snap_count="1" />
-        </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView_title_department"
+                android:layout_width="186dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/titile_hot_department"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_title_university"
+                app:layout_constraintStart_toStartOf="@+id/imageView_title_university"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_view_university" />
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/recycler_view_department"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_title_department"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView_title_department"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_title_department"
+                app:msrv_gravity="start"
+                app:msrv_ms_per_inch="@dimen/normal_speed"
+                app:msrv_snap_count="1"
+                tools:ignore="MissingConstraints" />
+
+
+            <ImageView
+                android:id="@+id/imageView_title_ambassador"
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/title_ambassador"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_title_department"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView_title_department"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_view_department" />
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/recycler_view_ambassador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/imageView_title_event"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_title_ambassador"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView_title_ambassador"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_title_ambassador"
+                app:msrv_gravity="start"
+                app:msrv_ms_per_inch="@dimen/normal_speed"
+                app:msrv_snap_count="1" />
+
+
+            <ImageView
+                android:id="@+id/imageView_title_event"
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/title_campus_news"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_title_ambassador"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView_title_ambassador"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_view_ambassador" />
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/recycler_view_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_title_event"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView_title_event"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_title_event"
+                app:msrv_gravity="start"
+                app:msrv_ms_per_inch="@dimen/normal_speed"
+                app:msrv_snap_count="1" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
     </ScrollView>
 
-
-    <TextView
-        android:id="@+id/textView_see_more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="see more"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView_login" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="350dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/rounded_card_view"
-        android:paddingLeft="16dp"
-        android:paddingTop="6dp"
-        android:paddingRight="16dp"
-        app:cardCornerRadius="@dimen/card_movie_radius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_see_more"/>
-
-    <ImageView
-        android:id="@+id/imageView_title_department"
-        android:layout_width="186dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:src="@drawable/titile_hot_department"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
 

@@ -16,7 +16,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import id.campusin.tanyakampus.R;
+import id.campusin.tanyakampus.adapter.DepartmentAdapter;
 import id.campusin.tanyakampus.adapter.MovieAdapter;
+import id.campusin.tanyakampus.model.DepartmentModel;
 import id.campusin.tanyakampus.model.Movie;
 
 public class HomeFragment extends Fragment {
@@ -29,11 +31,40 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        MultiSnapRecyclerView firstRecyclerView = view.findViewById(R.id.first_recycler_view);
+
+        MultiSnapRecyclerView departmentRecyclerView = view.findViewById(R.id.recycler_view_department);
+        LinearLayoutManager departmentManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        DepartmentAdapter departmentAdapter = new DepartmentAdapter(getContext(), getDepartment());
+        departmentRecyclerView.setLayoutManager(departmentManager);
+        departmentRecyclerView.setAdapter(departmentAdapter);
+
         MovieAdapter firstAdapter = new MovieAdapter(getContext(), getMovie());
+        MultiSnapRecyclerView firstRecyclerView = view.findViewById(R.id.recycler_view_university);
         LinearLayoutManager firstManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         firstRecyclerView.setLayoutManager(firstManager);
         firstRecyclerView.setAdapter(firstAdapter);
+
+        MultiSnapRecyclerView ambassadorRecycle = view.findViewById(R.id.recycler_view_ambassador);
+        LinearLayoutManager ambassadorManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        DepartmentAdapter ambassadorAdapter = new DepartmentAdapter(getContext(), getDepartment());
+        ambassadorRecycle.setAdapter(ambassadorAdapter);
+        ambassadorRecycle.setLayoutManager(ambassadorManager);
+
+        MultiSnapRecyclerView newsRecycle = view.findViewById(R.id.recycler_view_event);
+        LinearLayoutManager newsManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        DepartmentAdapter newsAdapter = new DepartmentAdapter(getContext(), getDepartment());
+        newsRecycle.setAdapter(newsAdapter);
+        newsRecycle.setLayoutManager(newsManager);
+
+    }
+
+    private List<DepartmentModel> getDepartment(){
+        List<DepartmentModel> models = new ArrayList<>();
+        models.add(new DepartmentModel("foto", "Ilmu Komputer", 1));
+        models.add(new DepartmentModel("foto", "Elektronika Instrumentasi", 2));
+        models.add(new DepartmentModel("foto", "TETI", 2));
+        models.add(new DepartmentModel("foto", "ILKOM", 2));
+        return models;
     }
 
     private List<Movie> getMovie(){

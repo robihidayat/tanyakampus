@@ -10,7 +10,7 @@ import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.fragment.ChatFragment;
 import id.campusin.tanyakampus.fragment.FavoriteFragment;
 import id.campusin.tanyakampus.fragment.HomeFragment;
-import id.campusin.tanyakampus.fragment.SearchFragment;
+import id.campusin.tanyakampus.fragment.AmbassadorFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_action_home:
                 loadFragment(new HomeFragment());
                 return true;
-            case R.id.menu_action_search:
-                loadFragment(new SearchFragment());
+            case R.id.menu_action_ambassador:
+                loadFragment(new AmbassadorFragment());
                 return true;
         }
         return false;
