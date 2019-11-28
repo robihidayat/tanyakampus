@@ -19,16 +19,13 @@
 
 
     <android.support.constraint.ConstraintLayout
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         android:id="@+id/ConstraintLayout_bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="50dp" >
-        <RelativeLayout
-            android:id="@+id/relativeLayout_bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <android.support.design.widget.BottomNavigationView
                 android:id="@+id/bottom_navigation"
@@ -39,8 +36,10 @@
                 android:background="@color/colorPrimary"
                 app:itemIconTint="@drawable/selector"
                 app:itemTextColor="@color/colorItemNavigation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:menu="@menu/bottom_nav_menu" />
-        </RelativeLayout>
 
     </android.support.constraint.ConstraintLayout>
 

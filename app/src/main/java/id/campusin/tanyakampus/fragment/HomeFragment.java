@@ -1,8 +1,10 @@
 package id.campusin.tanyakampus.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.campusin.tanyakampus.R;
+import id.campusin.tanyakampus.activities.SearchActivity;
 import id.campusin.tanyakampus.adapter.DepartmentAdapter;
 import id.campusin.tanyakampus.adapter.UniversityAdapter;
 import id.campusin.tanyakampus.model.DepartmentModel;
@@ -21,14 +24,20 @@ import id.campusin.tanyakampus.model.UniversityModel;
 
 public class HomeFragment extends Fragment {
 
+    private CardView searchCard;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
 
     }
 
+
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
+        searchCard = view.findViewById(R.id.cardView_search);
 
         MultiSnapRecyclerView departmentRecyclerView = view.findViewById(R.id.recycler_view_department);
         LinearLayoutManager departmentManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -53,6 +62,12 @@ public class HomeFragment extends Fragment {
         DepartmentAdapter newsAdapter = new DepartmentAdapter(getContext(), getDepartment());
         newsRecycle.setAdapter(newsAdapter);
         newsRecycle.setLayoutManager(newsManager);
+
+        searchCard.setOnClickListener( v -> {
+            Intent intent = new Intent(getContext(), SearchActivity.class);
+            startActivity(intent);
+        });
+
 
     }
 

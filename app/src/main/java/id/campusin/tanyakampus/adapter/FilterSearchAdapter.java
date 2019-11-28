@@ -15,58 +15,49 @@ import java.util.List;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.model.DepartmentModel;
+import id.campusin.tanyakampus.model.FilterSearchModel;
 
 
-public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.MyViewHolder> {
+public class FilterSearchAdapter extends RecyclerView.Adapter<FilterSearchAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<DepartmentModel> departmentList;
+    private List<FilterSearchModel> filterSearchModels;
 
 
-    public DepartmentAdapter(Context mContext, List<DepartmentModel> departmentList){
+    public FilterSearchAdapter(Context mContext, List<FilterSearchModel> filterSearchModels){
         this.mContext = mContext;
-        this.departmentList = departmentList;
+        this.filterSearchModels = filterSearchModels;
     }
 
     @Override
-    public DepartmentAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
+    public FilterSearchAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.card_departement, viewGroup, false);
+                .inflate(R.layout.card_filter_search, viewGroup, false);
 
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final DepartmentAdapter.MyViewHolder viewHolder, int i){
-        viewHolder.title.setText(departmentList.get(i).getTitle());
-        String vote = Double.toString(departmentList.get(i).getRate());
-
-        String poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQr6-IcoaRHEXBo9LDgZ18uE9digJnQ6ytuJ-a0Gjh89tbhjwiX" ; //+ movieList.get(i).getPosterPath()
-
-        Glide.with(mContext)
-                .load(poster)
-                .placeholder(R.drawable.load)
-                .into(viewHolder.thumbnail);
+    public void onBindViewHolder(final FilterSearchAdapter.MyViewHolder viewHolder, int i){
+        viewHolder.title.setText(filterSearchModels.get(i).getTitle());
     }
 
     @Override
     public int getItemCount(){
-        return departmentList.size();
+        return filterSearchModels.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
-        public ImageView thumbnail;
 
         public MyViewHolder(View view){
             super(view);
-            title = view.findViewById(R.id.textView_title_department);
-            thumbnail = view.findViewById(R.id.thumbnail_department);
+            title = view.findViewById(R.id.editText_filter_search);
 
             view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION){
-                    DepartmentModel clickedDataItem = departmentList.get(pos);
+                    FilterSearchModel clickedDataItem = filterSearchModels.get(pos);
                    /* Intent intent = new Intent(mContext, DetailActivity.class);
                     intent.putExtra("movies", clickedDataItem );
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

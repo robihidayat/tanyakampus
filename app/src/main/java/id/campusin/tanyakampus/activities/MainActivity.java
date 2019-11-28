@@ -7,10 +7,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import id.campusin.tanyakampus.R;
-import id.campusin.tanyakampus.fragment.ChatFragment;
+import id.campusin.tanyakampus.fragment.AmbassadorFragment;
 import id.campusin.tanyakampus.fragment.FavoriteFragment;
 import id.campusin.tanyakampus.fragment.HomeFragment;
-import id.campusin.tanyakampus.fragment.AmbassadorFragment;
+import id.campusin.tanyakampus.fragment.MessageFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
         switch (item.getItemId()) {
             case R.id.menu_action_chat:
-                loadFragment(new ChatFragment());
+                loadFragment(new MessageFragment());
                 return true;
             case R.id.menu_action_favorites:
                 loadFragment(new FavoriteFragment());

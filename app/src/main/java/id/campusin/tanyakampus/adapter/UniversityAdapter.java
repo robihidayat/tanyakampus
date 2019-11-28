@@ -32,7 +32,7 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.My
     @Override
     public UniversityAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.university_card, viewGroup, false);
+                .inflate(R.layout.card_university, viewGroup, false);
 
         return new MyViewHolder(view);
     }
