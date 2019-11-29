@@ -13,7 +13,7 @@ import java.util.List;
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.model.UserMessage;
 
-public class MessageListAdapter extends RecyclerView.Adapter {
+public class MessageFragmentAdapter extends RecyclerView.Adapter {
 
         private static final int VIEW_TYPE_MESSAGE_SENT = 1;
         private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
@@ -21,7 +21,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
         private Context mContext;
         private List<UserMessage> mMessageList;
 
-        public MessageListAdapter(Context context, List<UserMessage> messageList) {
+        public MessageFragmentAdapter(Context context, List<UserMessage> messageList) {
             mContext = context;
             mMessageList = messageList;
         }

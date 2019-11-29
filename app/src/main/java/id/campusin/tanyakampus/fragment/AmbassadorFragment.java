@@ -17,13 +17,9 @@ import java.util.List;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.adapter.AmbassadorAdapter;
-import id.campusin.tanyakampus.adapter.UniversityAdapter;
 import id.campusin.tanyakampus.model.AmbassadorModel;
-import id.campusin.tanyakampus.model.DepartmentModel;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class AmbassadorFragment extends Fragment {
 
     @Override
