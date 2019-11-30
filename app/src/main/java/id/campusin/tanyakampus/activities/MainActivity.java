@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.fragment.AmbassadorFragment;
-import id.campusin.tanyakampus.fragment.FavoriteFragment;
+import id.campusin.tanyakampus.fragment.ProfileFragment;
 import id.campusin.tanyakampus.fragment.HomeFragment;
 import id.campusin.tanyakampus.fragment.MessageFragment;
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(new MessageFragment());
                 return true;
             case R.id.menu_action_favorites:
-                loadFragment(new FavoriteFragment());
+                loadFragment(new ProfileFragment());
                 return true;
             case R.id.menu_action_home:
                 loadFragment(new HomeFragment());

@@ -22,19 +22,6 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp">
 
-            <ImageView
-                android:id="@+id/imageView_back_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:src="@drawable/ic_arrow_back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/editText_activity_search"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.454" />
-
             <EditText
                 android:id="@+id/editText_activity_search"
                 android:layout_width="300dp"
@@ -66,7 +53,7 @@
             android:id="@+id/recycler_view_ambassador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="fill"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"

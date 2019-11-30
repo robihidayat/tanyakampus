@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ProfileFragment">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view_profile"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="3dp"
+        android:background="@drawable/rounded_card_view"
+        app:cardCornerRadius="@dimen/card_movie_radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ImageView_edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_mode_edit_black"
+                app:layout_constraintBottom_toTopOf="@+id/CircleImageView_profile_ambassador"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/CircleImageView_profile_ambassador" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/CircleImageView_profile_ambassador"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/sample_foto"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.45"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/TextView_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Robi Hidayat"
+                app:layout_constraintEnd_toEndOf="@+id/CircleImageView_profile_ambassador"
+                app:layout_constraintHorizontal_bias="0.448"
+                app:layout_constraintStart_toStartOf="@+id/CircleImageView_profile_ambassador"
+                app:layout_constraintTop_toBottomOf="@+id/CircleImageView_profile_ambassador" />
+            <TextView
+                android:id="@+id/TextView_profile_university"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="SMA Negeri 2 Cirebon"
+                app:layout_constraintEnd_toEndOf="@+id/TextView_profile_name"
+                app:layout_constraintStart_toStartOf="@+id/TextView_profile_name"
+                app:layout_constraintTop_toBottomOf="@+id/TextView_profile_name" />
+            <TextView
+                android:id="@+id/TextView_profile_department"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="IPA"
+                app:layout_constraintEnd_toEndOf="@+id/TextView_profile_university"
+                app:layout_constraintStart_toStartOf="@+id/TextView_profile_university"
+                app:layout_constraintTop_toBottomOf="@+id/TextView_profile_university" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:background="@drawable/rounded_card_view"
+        android:elevation="3dp"
+        app:cardCornerRadius="@dimen/card_movie_radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_profile">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView_profile_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="378dp"
+                android:src="@drawable/ic_contact_mail_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textView_profile_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="robihidayat122@gmail.com"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_profile_email"
+                app:layout_constraintStart_toEndOf="@+id/imageView_profile_email"
+                app:layout_constraintTop_toTopOf="@+id/imageView_profile_email" />
+
+            <ImageView
+                android:id="@+id/imageView_profile_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_contact_phone_black"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_profile_email"
+                app:layout_constraintStart_toStartOf="@+id/imageView_profile_email"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_profile_email" />
+
+            <TextView
+                android:id="@+id/textView_profile_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="082227395894"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_profile_phone"
+                app:layout_constraintStart_toEndOf="@+id/imageView_profile_phone"
+                app:layout_constraintTop_toTopOf="@+id/imageView_profile_phone" />
+
+            <ImageView
+                android:id="@+id/imageView_profile_interest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_bubble_interest"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_profile_phone"
+                app:layout_constraintStart_toStartOf="@+id/imageView_profile_phone"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_profile_phone" />
+
+            <TextView
+                android:id="@+id/textView_profile_interest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Jurusan Ilmu Alam Goib"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_profile_interest"
+                app:layout_constraintStart_toEndOf="@+id/imageView_profile_interest"
+                app:layout_constraintTop_toTopOf="@+id/imageView_profile_interest" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view_account"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:background="@drawable/rounded_card_view"
+        android:elevation="3dp"
+        app:cardCornerRadius="@dimen/card_movie_radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_content">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/TextView_Profile_keluar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="KELUAR"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></TextView>
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
+
+

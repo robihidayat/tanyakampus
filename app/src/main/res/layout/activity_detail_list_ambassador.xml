@@ -8,64 +8,156 @@
     tools:context=".activities.DetailListAmbassadorActivity">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/CircleImageView_detail_list_ambassador"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/sample_foto"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="0dp"
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="3dp"
+        android:background="@drawable/rounded_card_view"
+        app:cardCornerRadius="@dimen/card_movie_radius"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/TextView_detail_ambassador_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Nama"
-        app:layout_constraintEnd_toEndOf="@+id/CircleImageView_detail_list_ambassador"
-        app:layout_constraintHorizontal_bias="0.395"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/CircleImageView_detail_list_ambassador"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/sample_foto"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/TextView_detail_ambassador_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Nama"
+            app:layout_constraintEnd_toEndOf="@+id/CircleImageView_detail_list_ambassador"
+            app:layout_constraintHorizontal_bias="0.448"
+            app:layout_constraintStart_toStartOf="@+id/CircleImageView_detail_list_ambassador"
+            app:layout_constraintTop_toBottomOf="@+id/CircleImageView_detail_list_ambassador" />
+
+        <TextView
+            android:id="@+id/TextView_detail_ambassador_university"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="University"
+            app:layout_constraintEnd_toEndOf="@+id/TextView_detail_ambassador_name"
+            app:layout_constraintStart_toStartOf="@+id/TextView_detail_ambassador_name"
+            app:layout_constraintTop_toBottomOf="@+id/TextView_detail_ambassador_name" />
+        <TextView
+            android:id="@+id/TextView_detail_ambassador_department"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Department"
+            app:layout_constraintEnd_toEndOf="@+id/TextView_detail_ambassador_university"
+            app:layout_constraintStart_toStartOf="@+id/TextView_detail_ambassador_university"
+            app:layout_constraintTop_toBottomOf="@+id/TextView_detail_ambassador_university" />
+
+    </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_line_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CircleImageView_detail_list_ambassador" />
+        app:layout_constraintTop_toBottomOf="@+id/card_view">
+
+        <TextView
+            android:id="@+id/textView_detail_list_ambassador_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="136dp"
+            android:text="158"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P O S T"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView_detail_list_ambassador_post"
+            app:layout_constraintStart_toStartOf="@+id/textView_detail_list_ambassador_post"
+            app:layout_constraintTop_toBottomOf="@+id/textView_detail_list_ambassador_post" />
 
 
-    <TextView
-        android:id="@+id/TextView_detail_ambassador_university"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="University"
-        app:layout_constraintEnd_toEndOf="@+id/TextView_detail_ambassador_name"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/TextView_detail_ambassador_name"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_detail_ambassador_name" />
+        <TextView
+            android:id="@+id/textView_detail_list_ambassador_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="136dp"
+            android:text="5"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R A T E"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView_detail_list_ambassador_rating"
+            app:layout_constraintStart_toStartOf="@+id/textView_detail_list_ambassador_rating"
+            app:layout_constraintTop_toBottomOf="@+id/textView_detail_list_ambassador_rating" />
 
-    <TextView
-        android:id="@+id/TextView_detail_ambassador_department"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Department"
-        app:layout_constraintEnd_toEndOf="@+id/TextView_detail_ambassador_university"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/TextView_detail_ambassador_university"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_detail_ambassador_university" />
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/Button_message_ambassador"
-        android:layout_width="100dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_card_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_button_message"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="MESSAGE"
-        app:layout_constraintEnd_toEndOf="@+id/TextView_detail_ambassador_department"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Button_follow_ambassador"
+        app:layout_constraintStart_toStartOf="@+id/Button_follow_ambassador" />
+
+    <Button
+        android:id="@+id/Button_follow_ambassador"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_follow_message"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="FOLLOW"
+        android:textColor="#03ae7d"
+        app:layout_constraintBottom_toTopOf="@+id/Button_message_ambassador"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/TextView_detail_ambassador_department"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_detail_ambassador_department" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
