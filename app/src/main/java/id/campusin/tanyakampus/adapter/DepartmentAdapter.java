@@ -61,7 +61,7 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.My
         public MyViewHolder(View view){
             super(view);
             title = view.findViewById(R.id.textView_title_department);
-            thumbnail = view.findViewById(R.id.thumbnail_department);
+            thumbnail = view.findViewById(R.id.cardView_department_thumbnail_department);
 
             view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();

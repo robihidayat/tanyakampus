@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TanyaKampus</string>
+    <string name="app_name">Tanyakampus</string>
     <string name="landing_page_register">register</string>
     <string name="landing_page_login">login</string>
     <string name="kampus">kampus ?</string>

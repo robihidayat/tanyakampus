@@ -129,9 +129,7 @@
             app:layout_constraintEnd_toEndOf="@+id/textView_detail_list_ambassador_rating"
             app:layout_constraintStart_toStartOf="@+id/textView_detail_list_ambassador_rating"
             app:layout_constraintTop_toBottomOf="@+id/textView_detail_list_ambassador_rating" />
-
     </android.support.constraint.ConstraintLayout>
-
     <Button
         android:id="@+id/Button_message_ambassador"
         android:layout_width="300dp"

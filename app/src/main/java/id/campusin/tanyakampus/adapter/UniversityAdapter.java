@@ -59,8 +59,8 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.My
 
         public MyViewHolder(View view){
             super(view);
-            title = view.findViewById(R.id.title);
-            thumbnail = view.findViewById(R.id.thumbnail);
+            title = view.findViewById(R.id.TextView_card_university_title);
+            thumbnail = view.findViewById(R.id.ImageView_card_university_thumbnail);
 
             view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
