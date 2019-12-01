@@ -60,6 +60,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:paddingTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/toolbar_fragment_home"
             app:layout_constraintHorizontal_bias="0.0"
@@ -70,10 +71,10 @@
             <ImageView
                 android:id="@+id/imageView_title_university"
                 android:layout_width="186dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:src="@drawable/title_hot_universities"
+                android:src="@drawable/titile_hot_department"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.071"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,11 +98,11 @@
             <ImageView
                 android:id="@+id/imageView_title_department"
                 android:layout_width="186dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:src="@drawable/titile_hot_department"
+                android:src="@drawable/title_hot_universities"
                 app:layout_constraintEnd_toEndOf="@+id/imageView_title_university"
                 app:layout_constraintStart_toStartOf="@+id/imageView_title_university"
                 app:layout_constraintTop_toBottomOf="@+id/recycler_view_university" />
@@ -127,7 +128,7 @@
             <ImageView
                 android:id="@+id/imageView_title_ambassador"
                 android:layout_width="190dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:src="@drawable/title_ambassador"
@@ -156,7 +157,7 @@
             <ImageView
                 android:id="@+id/imageView_title_event"
                 android:layout_width="190dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="16dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"

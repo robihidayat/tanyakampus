@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 
 
 ext.majorVersion = 1
-ext.minorVersion = 2
+ext.minorVersion = 3
 ext.patchVersion = 3
-ext.preRelease = "DEMO"
+ext.preRelease = "Release"
 
 ext.minSdkVersion = 24
 
