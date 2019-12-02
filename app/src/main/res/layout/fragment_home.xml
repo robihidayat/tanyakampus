@@ -174,7 +174,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView_title_ambassador"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_title_ambassador"
-                app:msrv_gravity="start"
+                app:msrv_gravity="center"
                 app:msrv_ms_per_inch="@dimen/normal_speed"
                 app:msrv_snap_count="1" />
 
@@ -225,9 +225,13 @@
                 android:id="@+id/recycler_view_tips_and_trics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="fill"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView_tips_and_tric"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView_tips_and_tric"
@@ -235,6 +239,8 @@
                 app:msrv_gravity="start"
                 app:msrv_ms_per_inch="@dimen/normal_speed"
                 app:msrv_snap_count="1" />
+
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

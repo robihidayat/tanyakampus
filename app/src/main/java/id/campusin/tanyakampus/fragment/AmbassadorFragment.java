@@ -32,7 +32,7 @@ public class AmbassadorFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         AmbassadorAdapter firstAdapter = new AmbassadorAdapter(getContext(), getAmbassador());
-        MultiSnapRecyclerView firstRecyclerView = view.findViewById(R.id.recycler_view_ambassador);
+        MultiSnapRecyclerView firstRecyclerView = view.findViewById(R.id.recycler_view_fragment_ambassador);
         LinearLayoutManager firstManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         firstRecyclerView.setLayoutManager(firstManager);
         firstRecyclerView.setAdapter(firstAdapter);
