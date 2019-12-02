@@ -10,7 +10,7 @@ import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.fragment.AmbassadorFragment;
 import id.campusin.tanyakampus.fragment.ProfileFragment;
 import id.campusin.tanyakampus.fragment.HomeFragment;
-import id.campusin.tanyakampus.fragment.MessageFragment;
+import id.campusin.tanyakampus.fragment.QuestionAnswerFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
         switch (item.getItemId()) {
-            case R.id.menu_action_chat:
-                loadFragment(new MessageFragment());
+            case R.id.menu_action_answer:
+                loadFragment(new QuestionAnswerFragment());
                 return true;
             case R.id.menu_action_favorites:
                 loadFragment(new ProfileFragment());

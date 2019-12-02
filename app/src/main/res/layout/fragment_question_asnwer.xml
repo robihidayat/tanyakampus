@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.QuestionAnswerFragment">
+
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar_fragment_answer"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="#ffffff"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/ConstraintLayoutToolbar_fragment_home"
+                android:background="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp">
+
+                  <ImageView
+                      android:id="@+id/imageView_back_search"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="6dp"
+                      android:src="@drawable/ic_arrow_back"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toStartOf="@+id/editText_activity_search"
+                      app:layout_constraintHorizontal_bias="0.0"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent"
+                      app:layout_constraintVertical_bias="0.454" />
+
+                  <EditText
+                      android:id="@+id/editText_activity_search"
+                      android:layout_width="300dp"
+                      android:layout_height="40dp"
+                      android:layout_marginStart="13dp"
+                      android:background="@drawable/rounded_search_toolbar"
+                      android:hint="Search"
+                      android:singleLine="true"
+                      android:textAlignment="inherit"
+                      android:textColorHint="@color/black"
+                      app:layout_constraintBottom_toBottomOf="@+id/imageView_back_search"
+                      app:layout_constraintStart_toEndOf="@+id/imageView_back_search"
+                      app:layout_constraintTop_toTopOf="@+id/imageView_back_search"
+                      app:layout_constraintVertical_bias="0.6" />
+            </android.support.constraint.ConstraintLayout>
+      </android.support.v7.widget.Toolbar>
+
+      <ScrollView
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment_answer">
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/MultiSnapRecyclerView_message_inbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="clip_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:msrv_gravity="start"
+                app:msrv_ms_per_inch="@dimen/normal_speed"
+                app:msrv_snap_count="3" />
+
+      </ScrollView>
+
+      <id.campusin.tanyakampus.custom.MovableFloatingActionButton
+          android:id="@+id/FloatingActionButton_home_fragment"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="4dp"
+          android:layout_marginBottom="4dp"
+          android:elevation="6dp"
+          android:foregroundGravity="right|bottom"
+          app:borderWidth="0dp"
+          android:contentDescription="Tanya Kampus"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:pressedTranslationZ="12dp"
+          app:srcCompat="@drawable/ic_add_black_24dp" />
+
+</android.support.constraint.ConstraintLayout>
+
+

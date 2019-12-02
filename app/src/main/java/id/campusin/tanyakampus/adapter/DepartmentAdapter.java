@@ -1,6 +1,7 @@
 package id.campusin.tanyakampus.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+import java.util.Random;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.model.DepartmentModel;
@@ -40,6 +42,8 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.My
     public void onBindViewHolder(final DepartmentAdapter.MyViewHolder viewHolder, int i){
         viewHolder.title.setText(departmentList.get(i).getTitle());
         String vote = Double.toString(departmentList.get(i).getRate());
+
+
 
         String poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQr6-IcoaRHEXBo9LDgZ18uE9digJnQ6ytuJ-a0Gjh89tbhjwiX" ; //+ movieList.get(i).getPosterPath()
 

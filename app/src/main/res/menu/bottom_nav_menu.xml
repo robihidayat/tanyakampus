@@ -17,9 +17,9 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/menu_action_chat"
-        android:icon="@drawable/vector_action_message"
-        android:title="Message"
+        android:id="@+id/menu_action_answer"
+        android:icon="@drawable/ic_question_answer_black_24dp"
+        android:title="Answer"
         app:showAsAction="always" />
 
     <item

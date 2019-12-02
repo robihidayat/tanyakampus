@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MessageFragment">
-
+    tools:context=".fragment.QuestionAnswerFragment">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_fragment_home"
@@ -17,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <android.support.constraint.ConstraintLayout
             android:background="#ffffff"
             android:layout_width="wrap_content"
@@ -25,29 +23,56 @@
 
             <android.support.design.card.MaterialCardView
                 android:id="@+id/cardView_search"
+                android:layout_width="350dp"
+                android:layout_height="35dp"
+                android:background="@drawable/rounded_card_view"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="6dp"
+                    android:text="Search"
+                    android:textColor="#000000" />
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/cardView_message"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/rounded_card_view"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="360dp"
-                android:layout_height="35dp">
-                <TextView
-                    android:textColor="#000000"
-                    android:text="Search"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="6dp"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/Image_view_message"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/vector_action_message"
+                    app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+                    app:layout_constraintEnd_toEndOf="@+id/toolbar_fragment_home"
+                    app:layout_constraintHorizontal_bias="0.958"
+                    app:layout_constraintStart_toStartOf="@+id/toolbar_fragment_home"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment_home"
+                    app:layout_constraintVertical_bias="1.0" />
 
             </android.support.design.card.MaterialCardView>
+
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +92,7 @@
             app:layout_constraintStart_toStartOf="@+id/toolbar_fragment_home"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment_home"
             app:layout_constraintVertical_bias="0.0">
-            
+
             <ImageView
                 android:id="@+id/imageView_title_university"
                 android:layout_width="186dp"
@@ -171,21 +196,62 @@
                 android:id="@+id/recycler_view_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="@+id/imageView_title_event"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView_title_event"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_title_event"
-                app:msrv_gravity="start"
+                app:msrv_gravity="center"
                 app:msrv_ms_per_inch="@dimen/normal_speed"
                 app:msrv_snap_count="1" />
 
+
+            <ImageView
+                android:id="@+id/imageView_tips_and_tric"
+                android:layout_width="190dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="24dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/titile_tips_and_trics"
+                app:layout_constraintEnd_toEndOf="@+id/recycler_view_event"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView_title_event"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_view_event" />
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/recycler_view_tips_and_trics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_tips_and_tric"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView_tips_and_tric"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_tips_and_tric"
+                app:msrv_gravity="start"
+                app:msrv_ms_per_inch="@dimen/normal_speed"
+                app:msrv_snap_count="1" />
         </android.support.constraint.ConstraintLayout>
-
-
     </ScrollView>
+
+    <id.campusin.tanyakampus.custom.MovableFloatingActionButton
+        android:id="@+id/FloatingActionButton_home_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:elevation="6dp"
+        android:foregroundGravity="right|bottom"
+        app:borderWidth="0dp"
+        android:contentDescription="Tanya Kampus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
 
 
 </android.support.constraint.ConstraintLayout>
