@@ -2,10 +2,11 @@ package id.campusin.tanyakampus.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView;
 
@@ -16,7 +17,7 @@ import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.adapter.FilterSearchAdapter;
 import id.campusin.tanyakampus.model.FilterSearchModel;
 
-public class SearchActivity extends AppCompatActivity{
+public class SearchActivity extends AppCompatActivity {
 
     ImageView imageViewSearch, backPress;
     EditText editTextSearch;

@@ -17,6 +17,13 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/menu_action_ask"
+        android:icon="@drawable/icon_menu_help"
+        android:title="Ask"
+        android:iconTintMode="add"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/menu_action_answer"
         android:icon="@drawable/ic_question_answer_black_24dp"
         android:title="Answer"

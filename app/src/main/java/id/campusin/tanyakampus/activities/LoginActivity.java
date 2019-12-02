@@ -2,10 +2,11 @@ package id.campusin.tanyakampus.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.utils.PredicateUtils;

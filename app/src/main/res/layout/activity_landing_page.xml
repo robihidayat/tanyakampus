@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +8,7 @@
     android:background="@color/colorPrimary"
     tools:context=".activities.LandingPage">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_landing_page_background"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,30 +18,29 @@
         tools:layout_editor_absoluteX="27dp">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="209dp"
             android:layout_height="187dp"
+            android:layout_marginTop="50dp"
             android:src="@drawable/logo"
-            app:layout_constraintBottom_toTopOf="@+id/text_view_landing_page_kampus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.436" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/text_view_landing_page_kampus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="200dp"
-            android:src="@drawable/tanya_kampus_warna"
             android:layout_marginBottom="16dp"
+            android:src="@drawable/tanya_kampus_warna"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.419"
             app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_landing_page_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -55,31 +54,30 @@
             android:layout_height="52dp"
             android:layout_marginStart="16dp"
             android:background="@drawable/rounded_button_login"
-            android:text="@string/landing_page_login"
-            android:foreground="?android:attr/selectableItemBackground"
             android:fontFamily="sans-serif-black"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/landing_page_login"
+            android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textStyle="normal"
-            app:layout_constraintTop_toTopOf="parent"></Button>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button_landing_page_register"
-            android:foreground="?android:attr/selectableItemBackground"
             android:layout_width="175dp"
             android:layout_height="52dp"
-            android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_button_register"
+            android:fontFamily="sans-serif-black"
+            android:foreground="?android:attr/selectableItemBackground"
             android:text="@string/landing_page_register"
             android:textColor="#ffffff"
-            android:fontFamily="sans-serif-black"
             android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="@id/button_landing_page_login"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/button_landing_page_login"
-            tools:ignore="MissingConstraints"></Button>
+            app:layout_constraintStart_toEndOf="@+id/button_landing_page_login"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.constraint.ConstraintLayout>
 
-
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

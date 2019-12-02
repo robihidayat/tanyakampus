@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.ProfileFragment">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/card_view_profile"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ConstraintLayout_cardView_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -76,11 +76,11 @@
                 app:layout_constraintEnd_toEndOf="@+id/TextView_profile_university"
                 app:layout_constraintStart_toStartOf="@+id/TextView_profile_university"
                 app:layout_constraintTop_toBottomOf="@+id/TextView_profile_university" />
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/card_view_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_view_profile">
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:layout_width="match_parent"
@@ -157,10 +157,11 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imageView_profile_interest"
                 app:layout_constraintStart_toEndOf="@+id/imageView_profile_interest"
                 app:layout_constraintTop_toTopOf="@+id/imageView_profile_interest" />
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/card_view_profile_aggrements"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -173,7 +174,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_view_content">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:layout_width="match_parent"
@@ -259,11 +260,11 @@
                 app:layout_constraintTop_toTopOf="@+id/textView_profile_rate" />
 
 
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/card_view_profile_exit"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -276,7 +277,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_view_profile_aggrements">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -294,17 +295,17 @@
                 android:textColor="@color/red"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.v7.widget.CardView>
-
-
+    </androidx.cardview.widget.CardView>
 
 
 
 
 
 
-</android.support.constraint.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

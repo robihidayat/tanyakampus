@@ -1,13 +1,16 @@
 package id.campusin.tanyakampus.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.fragment.AmbassadorFragment;
+import id.campusin.tanyakampus.fragment.AskFragment;
 import id.campusin.tanyakampus.fragment.ProfileFragment;
 import id.campusin.tanyakampus.fragment.HomeFragment;
 import id.campusin.tanyakampus.fragment.QuestionAnswerFragment;
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_action_ambassador:
                 loadFragment(new AmbassadorFragment());
+                return true;
+            case R.id.menu_action_ask:
+                loadFragment(new AskFragment());
                 return true;
         }
         return false;
