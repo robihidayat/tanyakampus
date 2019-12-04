@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "342762966049",
+    "firebase_url": "https://tanyakampus-38f8a.firebaseio.com",
+    "project_id": "tanyakampus-38f8a",
+    "storage_bucket": "tanyakampus-38f8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342762966049:android:9a47c7b5baba222ecf6760",
+        "android_client_info": {
+          "package_name": "id.campusin.tanyakampus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342762966049-vpjh0tkc1f0m524al7jun6nfpqevp8be.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.campusin.tanyakampus",
+            "certificate_hash": "724b6ed933867730102adb8ddb71e0b5f4614f6a"
+          }
+        },
+        {
+          "client_id": "342762966049-ld8q0sfdbr5vpuqlv2ltd5u96en6kgb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAleNx91E7BMjT3UaaKk7UAtgQ2yM9zydg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "342762966049-ld8q0sfdbr5vpuqlv2ltd5u96en6kgb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

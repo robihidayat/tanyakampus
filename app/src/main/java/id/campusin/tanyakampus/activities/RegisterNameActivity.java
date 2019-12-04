@@ -22,10 +22,11 @@ public class RegisterNameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.MainTheme);
         setContentView(R.layout.activity_register_name);
 
         buttonNext = findViewById(R.id.button_register_name);
-        editTextName = findViewById(R.id.editText_register_name);
+        editTextName = findViewById(R.id.editText_register_password);
         editTextEmail = findViewById(R.id.editText_register_email);
 
 

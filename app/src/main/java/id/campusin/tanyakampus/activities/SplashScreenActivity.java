@@ -19,7 +19,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.SplashScreen);
+        setTheme(R.style.MainTheme);
         setContentView(R.layout.activity_splash_screan);
 
         textViewVersion = findViewById(R.id.textView_version);

@@ -25,7 +25,6 @@
         <activity android:name=".activities.RegisterPasswordActivity" />
         <activity android:name=".activities.RegisterNameActivity" />
         <activity android:name=".activities.LandingPage" />
-        <activity android:name=".activities.LoginPasswordActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity

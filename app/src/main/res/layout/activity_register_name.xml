@@ -5,116 +5,163 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#FFFFFF"
     tools:context=".activities.RegisterNameActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_register_background"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView_register"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="27dp">
 
         <ImageView
-            android:layout_width="209dp"
-            android:layout_height="187dp"
+            android:id="@+id/imageView3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/logo"
-            app:layout_constraintBottom_toTopOf="@+id/text_view_register"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.436" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/text_view_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="200dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
             android:src="@drawable/tanya_kampus"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:id="@+id/scrollView_register"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.12">
+        app:layout_constraintBottom_toTopOf="@+id/button_register_name"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_register_background"
+        tools:layout_editor_absoluteX="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout_landing_page_button"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:background="#ffffff"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHeight_percent="0.12">
+
+
+            <TextView
+                android:id="@+id/textView_register_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/pt_sans"
+                android:text="Please insert your personal information below"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_register_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/pt_sans"
+                android:textColor="#000000"
+                android:text="Full Name"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView_register_description"
+                app:layout_constraintTop_toBottomOf="@+id/textView_register_description" />
+
+
+            <EditText
+                android:id="@+id/editText_register_username"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:hint="e.g Name"
+                android:textColor="#000000"
+                android:inputType="textEmailAddress"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toStartOf="@+id/textView_register_username"
+                app:layout_constraintTop_toBottomOf="@+id/textView_register_username" />
+
 
             <EditText
                 android:id="@+id/editText_register_email"
                 android:layout_width="350dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="31dp"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/rounded_button_login"
-                android:hint="@string/please_input_your_name"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toTopOf="@+id/button_register_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_register_name">
-
-            </EditText>
+                android:layout_marginTop="8dp"
+                android:inputType="textEmailAddress"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                android:hint="e.g name@email.com"
+                app:layout_constraintStart_toStartOf="@+id/textView_register_email"
+                app:layout_constraintTop_toBottomOf="@+id/textView_register_email" />
 
             <EditText
-                android:id="@+id/editText_register_name"
+                android:id="@+id/editText_register_phone"
                 android:layout_width="350dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="31dp"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/rounded_button_login"
-                android:hint="@string/please_input_your_name"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toTopOf="@+id/button_register_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_register_email">
+                android:layout_marginTop="8dp"
+                android:inputType="phone"
+                android:textColor="#000000"
+                android:textAlignment="textStart"
+                android:hint="e.g 8108102102122"
+                app:layout_constraintStart_toStartOf="@+id/textView_register_phone"
+                app:layout_constraintTop_toBottomOf="@+id/textView_register_phone" />
 
-            </EditText>
+            <TextView
+                android:id="@+id/textView_register_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/pt_sans"
+                android:text="Email"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/editText_register_username"
+                app:layout_constraintTop_toBottomOf="@+id/editText_register_username" />
 
-            <Button
-                android:id="@+id/button_register_name"
-                android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:background="@drawable/rounded_button_register"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/next"
-                android:textColor="#ffffff"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.491"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_register_name">
-
-            </Button>
+            <TextView
+                android:id="@+id/textView_register_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/pt_sans"
+                android:text="Phone Number"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/editText_register_email"
+                app:layout_constraintTop_toBottomOf="@+id/editText_register_email" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/button_register_name"
+        android:layout_width="390dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/rounded_button_login"
+        android:fontFamily="sans-serif-black"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/landing_page_register"
+        android:textColor="#FFFFFF"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

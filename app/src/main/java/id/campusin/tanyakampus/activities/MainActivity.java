@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.MainTheme);
         setContentView(R.layout.activity_main);
         loadFragment(new HomeFragment());
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
