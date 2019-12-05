@@ -5,7 +5,7 @@ apply plugin: 'com.google.firebase.firebase-perf'
 
 ext.majorVersion = 1
 ext.minorVersion = 3
-ext.patchVersion = 3
+ext.patchVersion = 4
 ext.preRelease = "v"
 
 ext.minSdkVersion = 21

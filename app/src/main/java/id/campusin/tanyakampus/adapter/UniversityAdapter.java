@@ -21,12 +21,12 @@ import id.campusin.tanyakampus.model.UniversityModel;
 public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<UniversityModel> movieList;
+    private List<UniversityModel> universityList;
 
 
-    public UniversityAdapter(Context mContext, List<UniversityModel> movieList){
+    public UniversityAdapter(Context mContext, List<UniversityModel> universityList){
         this.mContext = mContext;
-        this.movieList = movieList;
+        this.universityList = universityList;
     }
 
     @Override
@@ -39,18 +39,16 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.My
 
     @Override
     public void onBindViewHolder(final UniversityAdapter.MyViewHolder viewHolder, int i){
-        viewHolder.title.setText(movieList.get(i).getTitle());
-        String poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQr6-IcoaRHEXBo9LDgZ18uE9digJnQ6ytuJ-a0Gjh89tbhjwiX" ; //+ movieList.get(i).getPosterPath()
-
+        viewHolder.title.setText(universityList.get(i).getTitle());
         Glide.with(mContext)
-                .load(poster)
+                .load(universityList.get(i).getPosterPath())
                 .placeholder(R.drawable.load)
                 .into(viewHolder.thumbnail);
     }
 
     @Override
     public int getItemCount(){
-        return movieList.size();
+        return universityList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -65,7 +63,7 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.My
             view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION){
-                    UniversityModel clickedDataItem = movieList.get(pos);
+                    UniversityModel clickedDataItem = universityList.get(pos);
                     Intent intent = new Intent(mContext, DetailUniversityActivity.class);
                     intent.putExtra("universityModel", clickedDataItem );
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

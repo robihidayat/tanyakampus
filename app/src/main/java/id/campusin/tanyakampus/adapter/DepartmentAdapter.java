@@ -40,14 +40,8 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.My
     @Override
     public void onBindViewHolder(final DepartmentAdapter.MyViewHolder viewHolder, int i){
         viewHolder.title.setText(departmentList.get(i).getTitle());
-        String vote = Double.toString(departmentList.get(i).getRate());
-
-
-
-        String poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQr6-IcoaRHEXBo9LDgZ18uE9digJnQ6ytuJ-a0Gjh89tbhjwiX" ; //+ movieList.get(i).getPosterPath()
-
         Glide.with(mContext)
-                .load(poster)
+                .load(departmentList.get(i).getPosterPath())
                 .placeholder(R.drawable.load)
                 .into(viewHolder.thumbnail);
     }

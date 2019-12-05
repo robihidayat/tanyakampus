@@ -21,12 +21,12 @@ import id.campusin.tanyakampus.model.CampusNewsModel;
 public class CampusNewAdapter extends RecyclerView.Adapter<CampusNewAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<CampusNewsModel> departmentList;
+    private List<CampusNewsModel> campusList;
 
 
-    public CampusNewAdapter(Context mContext, List<CampusNewsModel> departmentList){
+    public CampusNewAdapter(Context mContext, List<CampusNewsModel> campusList){
         this.mContext = mContext;
-        this.departmentList = departmentList;
+        this.campusList = campusList;
     }
 
     @Override
@@ -39,20 +39,17 @@ public class CampusNewAdapter extends RecyclerView.Adapter<CampusNewAdapter.MyVi
 
     @Override
     public void onBindViewHolder(final CampusNewAdapter.MyViewHolder viewHolder, int i){
-        viewHolder.title.setText(departmentList.get(i).getTitle());
-        viewHolder.description.setText(departmentList.get(i).getDescription());
-
-        String poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQr6-IcoaRHEXBo9LDgZ18uE9digJnQ6ytuJ-a0Gjh89tbhjwiX" ; //+ movieList.get(i).getPosterPath()
-
+        viewHolder.title.setText(campusList.get(i).getTitle());
+        viewHolder.description.setText(campusList.get(i).getDescription());
         Glide.with(mContext)
-                .load(poster)
+                .load(campusList.get(i).getPosterPath())
                 .placeholder(R.drawable.load)
                 .into(viewHolder.thumbnail);
     }
 
     @Override
     public int getItemCount(){
-        return departmentList.size();
+        return campusList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -68,7 +65,7 @@ public class CampusNewAdapter extends RecyclerView.Adapter<CampusNewAdapter.MyVi
             view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION){
-                    CampusNewsModel clickedDataItem = departmentList.get(pos);
+                    CampusNewsModel clickedDataItem = campusList.get(pos);
                    /* Intent intent = new Intent(mContext, DetailActivity.class);
                     intent.putExtra("movies", clickedDataItem );
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

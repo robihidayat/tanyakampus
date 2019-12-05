@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="250dp"
     android:layout_height="250dp"
-    android:background="@drawable/rounded_card_view"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:adjustViewBounds="true">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintLayout_Card_University"
@@ -41,11 +39,13 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_below="@+id/ConstraintLayout_Card_University"
             android:fontFamily="@font/pt_sans"
             android:paddingLeft="@dimen/movie_title_padding"
+            android:text="title"
+            android:textStyle="bold"
             android:paddingTop="@dimen/movie_title_padding"
             android:paddingRight="@dimen/movie_title_padding"
             android:singleLine="true"
             android:textAlignment="center"
-            android:textColor="@color/movie_title"
+            android:textColor="#000000"
             android:textSize="@dimen/movie_title"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/CardView_card_university_holder_image" />

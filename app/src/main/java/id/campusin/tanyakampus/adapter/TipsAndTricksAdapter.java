@@ -5,10 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -19,12 +20,12 @@ import id.campusin.tanyakampus.model.TipsAndtricksModel;
 public class TipsAndTricksAdapter extends RecyclerView.Adapter<TipsAndTricksAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<TipsAndtricksModel> departmentList;
+    private List<TipsAndtricksModel> tipsAndtricksModels;
 
 
-    public TipsAndTricksAdapter(Context mContext, List<TipsAndtricksModel> departmentList){
+    public TipsAndTricksAdapter(Context mContext, List<TipsAndtricksModel> tipsAndtricksModels){
         this.mContext = mContext;
-        this.departmentList = departmentList;
+        this.tipsAndtricksModels = tipsAndtricksModels;
     }
 
     @Override
@@ -37,36 +38,27 @@ public class TipsAndTricksAdapter extends RecyclerView.Adapter<TipsAndTricksAdap
 
     @Override
     public void onBindViewHolder(final TipsAndTricksAdapter.MyViewHolder viewHolder, int i){
-//        viewHolder.title.setText(departmentList.get(i).getTitle());
-//        viewHolder.description.setText(departmentList.get(i).getDescription());
-//
-//        String poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQr6-IcoaRHEXBo9LDgZ18uE9digJnQ6ytuJ-a0Gjh89tbhjwiX" ; //+ movieList.get(i).getPosterPath()
-//
-//        Glide.with(mContext)
-//                .load(poster)
-//                .placeholder(R.drawable.load)
-//                .into(viewHolder.thumbnail);
+        Glide.with(mContext)
+                .load(tipsAndtricksModels.get(i).getPosterPath())
+                .placeholder(R.drawable.load)
+                .into(viewHolder.thumbnail);
     }
 
     @Override
     public int getItemCount(){
-        return departmentList.size();
+        return tipsAndtricksModels.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, description;
         public ImageView thumbnail;
 
         public MyViewHolder(View view){
             super(view);
-//            title = view.findViewById(R.id.TextView_campus_news_title);
-//            description = view.findViewById(R.id.TextView_campus_news_description);
-//            thumbnail = view.findViewById(R.id.ImageView_campus_news_thumbnail_department);
-
+            thumbnail = view.findViewById(R.id.ImageView_card_university_thumbnail);
             view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION){
-                    TipsAndtricksModel clickedDataItem = departmentList.get(pos);
+                    TipsAndtricksModel clickedDataItem = tipsAndtricksModels.get(pos);
                    /* Intent intent = new Intent(mContext, DetailActivity.class);
                     intent.putExtra("movies", clickedDataItem );
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
