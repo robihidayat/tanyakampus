@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.firebase-perf'
+
 
 ext.majorVersion = 1
 ext.minorVersion = 3
 ext.patchVersion = 3
-ext.preRelease = "Release"
+ext.preRelease = "v"
 
 ext.minSdkVersion = 21
 
@@ -13,10 +15,7 @@ private Integer generateVersionCode() {
 }
 
 private String generateVersionName() {
-    String versionName = "${ext.majorVersion}.${ext.minorVersion}.${ext.patchVersion}"
-    if (ext.preRelease != null && !ext.preRelease.isEmpty()) {
-        versionName = versionName + "-" + ext.preRelease
-    }
+    String versionName = ext.preRelease + "." + "${ext.majorVersion}.${ext.minorVersion}.${ext.patchVersion}"
     return versionName
 }
 
@@ -76,6 +75,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.2.0'
 
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    implementation 'com.google.firebase:firebase-perf:19.0.2'
+
 
 
 }

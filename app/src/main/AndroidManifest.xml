@@ -22,8 +22,8 @@
         <activity android:name=".activities.DetailDepartmentActivity" />
         <activity android:name=".activities.DetailUniversityActivity" />
         <activity android:name=".activities.SearchActivity" />
-        <activity android:name=".activities.RegisterPasswordActivity" />
-        <activity android:name=".activities.RegisterNameActivity" />
+        <activity android:name=".activities.RegisterStep2Activity" />
+        <activity android:name=".activities.RegisterStep1Activity" />
         <activity android:name=".activities.LandingPage" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.MainActivity" />
@@ -40,6 +40,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
     </application>
 
 </manifest>

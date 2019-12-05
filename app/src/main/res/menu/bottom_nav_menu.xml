@@ -25,8 +25,8 @@
 
     <item
         android:id="@+id/menu_action_answer"
-        android:icon="@drawable/ic_question_answer_black_24dp"
-        android:title="Answer"
+        android:icon="@drawable/ic_move_to_inbox_black_24dp"
+        android:title="Inbox"
         app:showAsAction="always" />
 
     <item

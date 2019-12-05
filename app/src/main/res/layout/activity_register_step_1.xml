@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".activities.RegisterNameActivity">
+    tools:context=".activities.RegisterStep1Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_register_background"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@+id/button_register_name"
+        app:layout_constraintBottom_toTopOf="@+id/button_register_action_continue"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout_register_background"
         tools:layout_editor_absoluteX="0dp">
 
@@ -81,7 +81,7 @@
 
 
             <EditText
-                android:id="@+id/editText_register_username"
+                android:id="@+id/editText_register_fullname"
                 android:layout_width="350dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
@@ -127,8 +127,8 @@
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/editText_register_username"
-                app:layout_constraintTop_toBottomOf="@+id/editText_register_username" />
+                app:layout_constraintStart_toStartOf="@+id/editText_register_fullname"
+                app:layout_constraintTop_toBottomOf="@+id/editText_register_fullname" />
 
             <TextView
                 android:id="@+id/textView_register_phone"
@@ -147,14 +147,14 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button_register_name"
+        android:id="@+id/button_register_action_continue"
         android:layout_width="390dp"
         android:layout_height="50dp"
         android:layout_marginBottom="0dp"
         android:background="@drawable/rounded_button_login"
         android:fontFamily="sans-serif-black"
         android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/landing_page_register"
+        android:text="C O N T I N U E"
         android:textColor="#FFFFFF"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"

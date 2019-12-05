@@ -5,8 +5,9 @@
     <color name="colorAccent">#04CEFA</color>
 
 
-    <color name="colorItemNavigation">#0A4452</color>
-    <color name="colorItemSelector">#0E31C2</color>
+    <color name="colorAppbarNavigation">#0B7CBB</color>
+    <color name="colorItemNavigation">#000000</color>
+    <color name="colorItemSelector">#808080</color>
 
 
     <color name="red">#FD0000</color>

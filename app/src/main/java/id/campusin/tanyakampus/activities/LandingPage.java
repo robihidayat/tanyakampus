@@ -123,7 +123,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 break;
             case R.id.button_landing_page_register:
-                startActivity(new Intent(getApplicationContext(), RegisterNameActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegisterStep1Activity.class));
                 break;
         }
     }
