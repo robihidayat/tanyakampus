@@ -6,16 +6,19 @@ apply plugin: 'com.google.firebase.firebase-perf'
 ext.majorVersion = 1
 ext.minorVersion = 3
 ext.patchVersion = 4
-ext.preRelease = "v"
+ext.preRelease = "Release"
 
-ext.minSdkVersion = 21
+ext.minSdkVersion = 24
 
 private Integer generateVersionCode() {
     return ext.minSdkVersion * 10000000 + ext.majorVersion * 10000 + ext.minorVersion * 100 + ext.patchVersion
 }
 
 private String generateVersionName() {
-    String versionName = ext.preRelease + "." + "${ext.majorVersion}.${ext.minorVersion}.${ext.patchVersion}"
+    String versionName = "${ext.majorVersion}.${ext.minorVersion}.${ext.patchVersion}"
+    if (ext.preRelease != null && !ext.preRelease.isEmpty()) {
+        versionName = versionName + "-" + ext.preRelease
+    }
     return versionName
 }
 
