@@ -24,6 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static id.campusin.tanyakampus.utils.config.Configuration.CACHE_CONTROL;
+import static okhttp3.logging.HttpLoggingInterceptor.Level.BODY;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.HEADERS;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.NONE;
 
@@ -55,7 +56,7 @@ public class RetrofitUtils {
 
     private static HttpLoggingInterceptor provideHttpLoggingInterceptor() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(message -> System.out.println("ServiceGenerator :" + message));
-        httpLoggingInterceptor.level(BuildConfig.DEBUG ? HEADERS : NONE);
+        httpLoggingInterceptor.level(BuildConfig.DEBUG ? BODY : NONE);
         return httpLoggingInterceptor;
     }
 
@@ -128,7 +129,7 @@ public class RetrofitUtils {
                     .addNetworkInterceptor(provideCacheInterceptor())
                     .cache(provideCache())
                     .sslSocketFactory(sslSocketFactory,trustAllCerts)
-                    //.connectionSpecs(Collections.singletonList(spec))
+//                    .connectionSpecs(Collections.singletonList(spec))
                     .retryOnConnectionFailure(false)
                     .readTimeout(300, TimeUnit.SECONDS)
                     .connectTimeout(300, TimeUnit.SECONDS)

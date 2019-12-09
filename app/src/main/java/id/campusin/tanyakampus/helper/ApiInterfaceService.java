@@ -19,4 +19,13 @@ public interface ApiInterfaceService {
     @GET("/api/user")
     Call<ResponseBody> userRequest(@Header("Authorization") String token);
 
+
+    @FormUrlEncoded
+    @POST("/api/register")
+    Call<ResponseBody> registerRequest(@Field("email") String email,
+                                       @Field("name") String name,
+                                       @Field("password") String password,
+                                       @Field("password_confirmation") String password_confirmation,
+                                       @Field("phone") String phone);
+
 }
