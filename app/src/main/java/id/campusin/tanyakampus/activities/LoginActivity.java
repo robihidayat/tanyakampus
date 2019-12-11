@@ -1,6 +1,5 @@
 package id.campusin.tanyakampus.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,20 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.helper.ApiInterfaceService;
 import id.campusin.tanyakampus.helper.RetrofitUtils;
 import id.campusin.tanyakampus.utils.PredicateUtils;
+import id.campusin.tanyakampus.utils.managers.AlertDialogManager;
+import id.campusin.tanyakampus.utils.managers.SessionManager;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,9 +30,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonLogin;
     private EditText editTextPassword, editTextUsername;
 
-    private Context mContext;
     private ProgressBar loading;
     private ApiInterfaceService apiInterfaceService;
+
+    private AlertDialogManager alert = new AlertDialogManager();
+
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextPassword.setOnClickListener(this);
         editTextUsername.setOnClickListener(this);
         apiInterfaceService = RetrofitUtils.apiService();
-        mContext = this;
+
+        // Session Manager
+        session = new SessionManager(getApplicationContext());
 
     }
 
@@ -70,8 +71,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             loading.setVisibility(View.VISIBLE);
             requestLogin(editTextUsername.getText().toString(), editTextPassword.getText().toString());
             } else {
-                Toast.makeText(getApplicationContext(), "Silakan lengkapi data", Toast.LENGTH_LONG).show();
-            }
+            alert.showAlertDialog(LoginActivity.this, "error ", "Silakan lengkapi seluruh data", false);
+         }
     }
 
     private void requestLogin(String username, String password){
@@ -86,17 +87,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 JSONObject jsonResult = new JSONObject(response.body().string());
                                 if (jsonResult.getString("token") != null){
                                     loading.setVisibility(View.INVISIBLE);
-                                    Toast.makeText(mContext, "login berhasil", Toast.LENGTH_SHORT).show();
+                                    session.createLoginSession(
+                                            (String)jsonResult.getJSONObject("user").get("name"),
+                                            (String) jsonResult.getJSONObject("user").get("email"),
+                                            (String) jsonResult.getJSONObject("user").get("phone"),
+                                            null
+                                    );
                                     Intent intentMain = new Intent(getApplication(), MainActivity.class);
                                     startActivity(intentMain);
                                     finish();
                                 } else {
-                                    String error_message = jsonResult.getString("error_msg");
-                                    Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
+                                    alert.showAlertDialog(LoginActivity.this, "Login failed..", "Username/Password is incorrect", false);
                                 }
                             } else {
                                 loading.setVisibility(View.INVISIBLE);
-                                Toast.makeText(mContext, "password atau username salah", Toast.LENGTH_SHORT).show();
+                                alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
                             }
                         } catch (JSONException | IOException e) {
                             e.printStackTrace();

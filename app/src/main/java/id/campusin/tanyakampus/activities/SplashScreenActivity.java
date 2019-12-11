@@ -6,14 +6,12 @@ import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import id.campusin.tanyakampus.BuildConfig;
 import id.campusin.tanyakampus.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
     private int loadingTime = 4000;
-
     private TextView textViewVersion;
 
     @Override
@@ -22,6 +20,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setTheme(R.style.MainTheme);
         setContentView(R.layout.activity_splash_screan);
 
+
         textViewVersion = findViewById(R.id.textView_version);
         textViewVersion.setText(BuildConfig.VERSION_NAME);
         new Handler().postDelayed(() -> {
@@ -29,6 +28,8 @@ public class SplashScreenActivity extends AppCompatActivity {
             startActivity(home);
             finish();
         },loadingTime);
+
+
 
     }
 }

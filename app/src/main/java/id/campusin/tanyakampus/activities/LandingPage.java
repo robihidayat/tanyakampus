@@ -8,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -21,7 +20,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.Objects;
+
 import id.campusin.tanyakampus.R;
+import id.campusin.tanyakampus.utils.managers.SessionManager;
 
 public class LandingPage extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +31,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
     private int RC_SIGN_IN = 7;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
+    private SessionManager session;
 
 
     @Override
@@ -42,6 +45,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
         findViewById(R.id.button_landing_page_register).setOnClickListener(this);
         setGooglePlusButtonText(signInButtonGoogle,  "CONTINUE WITH GOOGLE");
         signInButtonGoogle.setOnClickListener(this);
+        session = new SessionManager(getApplicationContext());
 
         GoogleSignInOptions gso =  new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -53,6 +57,9 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onStart() {
         super.onStart();
+        if(session.isLoggedIn()){
+            startActivity(new Intent(this, MainActivity.class));
+        }
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser!=null){
             updateUI(currentUser);
@@ -62,7 +69,11 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
 
     private void updateUI(FirebaseUser user) {
         if(user != null){
-            Toast.makeText(this,"Hello"+ user.getPhoneNumber(),Toast.LENGTH_LONG).show();
+            session.createLoginSession(
+                    user.getDisplayName(),
+                    user.getEmail(),
+                    user.getPhoneNumber(),
+                    Objects.requireNonNull(user.getPhotoUrl()).toString());
         }
     }
 
@@ -73,6 +84,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
                     if(command.isSuccessful()){
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateUI(user);
+                        System.out.println("firebase user --> "+ Objects.requireNonNull(user).getEmail());
                     } else {
                         Log.w("Login", "signInWithCredential:failure", command.getException());
                         Toast.makeText(this,"Auth Failed", Toast.LENGTH_LONG).show();
@@ -89,7 +101,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
+                firebaseAuthWithGoogle(Objects.requireNonNull(account));
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);

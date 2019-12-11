@@ -22,6 +22,7 @@ import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.helper.ApiInterfaceService;
 import id.campusin.tanyakampus.helper.RetrofitUtils;
 import id.campusin.tanyakampus.utils.PredicateUtils;
+import id.campusin.tanyakampus.utils.managers.SessionManager;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,13 +37,15 @@ public class RegisterStep2Activity extends AppCompatActivity {
     private Context mContext;
     private ProgressBar loading;
     private ApiInterfaceService apiInterfaceService;
+    private SessionManager session;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.MainTheme);
         setContentView(R.layout.activity_register_step_2);
-
+        session = new SessionManager(getApplicationContext());
         apiInterfaceService = RetrofitUtils.apiService();
         mContext = this;
 
@@ -87,7 +90,12 @@ public class RegisterStep2Activity extends AppCompatActivity {
                                 JSONObject jsonResult = new JSONObject(response.body().string());
                                 if (jsonResult.getString("token") != null){
                                     loading.setVisibility(View.INVISIBLE);
-                                    Toast.makeText(mContext, "register berhasil", Toast.LENGTH_SHORT).show();
+                                    session.createLoginSession(
+                                            (String)jsonResult.getJSONObject("user").get("name"),
+                                            (String)jsonResult.getJSONObject("user").get("email"),
+                                            (String)jsonResult.getJSONObject("user").get("phone"),
+                                            (String)jsonResult.getJSONObject("user").get("profile_picture")
+                                            );
                                     Intent intentLogin = new Intent(RegisterStep2Activity.this, MainActivity.class);
                                     startActivity(intentLogin);
                                     finish();
