@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#04CEFA</color>
+    <color name="colorPrimary">#3FE0D0</color>
     <color name="colorPrimaryDark">#04CEFA</color>
     <color name="colorAccent">#04CEFA</color>
 
@@ -17,6 +17,8 @@
 
 
     <color name="movie_title">#4c4c4c</color>
+
+    <color name="tosca">#3FE0D0</color>
 
 
 

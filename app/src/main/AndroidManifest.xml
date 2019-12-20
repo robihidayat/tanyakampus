@@ -5,17 +5,22 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:name=".helper.AnalyticsApps"
         android:allowBackup="true"
-        android:icon="@mipmap/logo_tanya_kampus"
+        android:icon="@drawable/tanya_kampus_logo"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/logo_tanya_kampus_round"
+        android:roundIcon="@drawable/tanya_kampus_logo"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.PrivateMessageActivity"></activity>
+        <activity android:name=".activities.UpdateProfileActivity"/>
+        <activity android:name=".activities.PrivateMessageActivity" />
         <activity android:name=".activities.DetailListAmbassadorActivity" />
         <activity android:name=".activities.DetailNewsActivity" />
         <activity android:name=".activities.DetailAmbassadorActivity" />
@@ -43,6 +48,16 @@
         <meta-data
             android:name="firebase_performance_logcat_enabled"
             android:value="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+
     </application>
 
 </manifest>

@@ -15,13 +15,16 @@ public class UniversityModel implements Parcelable {
     private Integer rate;
     @SerializedName("description")
     private String description;
+    @SerializedName("address")
+    private String address;
 
 
-    public UniversityModel(String posterPath, String title, Integer rate, String description) {
+    public UniversityModel(String posterPath, String title, Integer rate, String description, String address) {
         this.posterPath = posterPath;
         this.title = title;
         this.rate = rate;
         this.description = description;
+        this.address = address;
     }
 
     public UniversityModel() {
@@ -37,6 +40,10 @@ public class UniversityModel implements Parcelable {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public Integer getRate() {
@@ -56,6 +63,7 @@ public class UniversityModel implements Parcelable {
             rate = in.readInt();
         }
         description = in.readString();
+        address = in.readString();
     }
 
     public static final Creator<UniversityModel> CREATOR = new Creator<UniversityModel>() {
@@ -81,6 +89,7 @@ public class UniversityModel implements Parcelable {
         dest.writeString(this.title);
         dest.writeValue(this.rate);
         dest.writeString(this.description);
+        dest.writeString(this.address);
     }
 
 

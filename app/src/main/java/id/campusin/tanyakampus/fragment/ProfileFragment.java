@@ -1,7 +1,6 @@
 package id.campusin.tanyakampus.fragment;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,6 +24,7 @@ import java.util.Objects;
 import id.campusin.tanyakampus.BuildConfig;
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.activities.LandingPage;
+import id.campusin.tanyakampus.activities.UpdateProfileActivity;
 import id.campusin.tanyakampus.utils.managers.SessionManager;
 
 
@@ -57,6 +57,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.Button_Profile_keluar).setOnClickListener(this);
+        view.findViewById(R.id.FloatingActionButton_profile_edit).setOnClickListener(this);
         session = new SessionManager(getContext());
         Glide.with(this).load(session.getUserDetails().get("avatar"))
                 .placeholder(R.drawable.profile_lazzy_mode)
@@ -87,6 +88,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case R.id.Button_Profile_keluar:
                 signOut();
                 startActivity(new Intent(getContext(), LandingPage.class));
+                break;
+            case R.id.FloatingActionButton_profile_edit:
+                startActivity(new Intent(getContext(), UpdateProfileActivity.class));
                 break;
         }
     }

@@ -36,6 +36,14 @@ public class SessionManager {
 
     public static final String KEY_AVATAR = "avatar";
 
+    public static final String KEY_INTEREST = "interest";
+
+    public static final String KEY_DEPARTMENT = "department";
+
+    public static final String KEY_SCHOOL = "school";
+
+    public static final String KEY_TOKEN = "token";
+
 
     // Email address (make variable public to access from outside)
     public static final String KEY_EMAIL = "email";
@@ -68,6 +76,18 @@ public class SessionManager {
 
         // commit changes
         editor.commit();
+    }
+
+
+    public void setToken( String token){
+        // Storing avatar in pref
+        editor.putString(KEY_TOKEN, token);
+        // commit changes
+        editor.commit();
+    }
+
+    public String getToken(){
+       return pref.getString(KEY_TOKEN, null);
     }
 
     /**
@@ -108,6 +128,14 @@ public class SessionManager {
         user.put(KEY_PHONE, pref.getString(KEY_PHONE, null));
 
         user.put(KEY_AVATAR, pref.getString(KEY_AVATAR, null));
+
+        user.put(KEY_DEPARTMENT, pref.getString(KEY_DEPARTMENT, null));
+
+        user.put(KEY_SCHOOL, pref.getString(KEY_SCHOOL, null));
+
+        user.put(KEY_INTEREST, pref.getString(KEY_INTEREST, null));
+
+        user.put(KEY_TOKEN, pref.getString(KEY_TOKEN, null));
 
         // return user
         return user;

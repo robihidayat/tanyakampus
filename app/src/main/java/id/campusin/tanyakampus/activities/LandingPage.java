@@ -20,10 +20,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.Objects;
 
 import id.campusin.tanyakampus.R;
+import id.campusin.tanyakampus.helper.ApiInterfaceService;
+import id.campusin.tanyakampus.helper.RetrofitUtils;
 import id.campusin.tanyakampus.utils.managers.SessionManager;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LandingPage extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,6 +42,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
     private SessionManager session;
+    private ApiInterfaceService apiInterfaceService;
 
 
     @Override
@@ -45,6 +56,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
         findViewById(R.id.button_landing_page_register).setOnClickListener(this);
         setGooglePlusButtonText(signInButtonGoogle,  "CONTINUE WITH GOOGLE");
         signInButtonGoogle.setOnClickListener(this);
+        apiInterfaceService = RetrofitUtils.apiService();
         session = new SessionManager(getApplicationContext());
 
         GoogleSignInOptions gso =  new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -102,8 +114,9 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(Objects.requireNonNull(account));
+                requestRegisterFirebase(account.getDisplayName(), account.getEmail(),"", account.getIdToken());
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            } catch (ApiException e) {
+            } catch (ApiException | IOException e) {
                 Log.w(TAG, "Google sign in failed", e);
             }
         }
@@ -139,4 +152,39 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
                 break;
         }
     }
+
+
+    private void requestRegisterFirebase(String name, String email, String phone, String password) throws IOException {
+        apiInterfaceService.registerFirebaseRequest(email, name, password, phone, "user").enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    if (response.isSuccessful()){
+                        assert response.body() != null;
+                        JSONObject jsonResult = new JSONObject(response.body().string());
+                        if (jsonResult.getString("token") != null){
+                            System.out.println("dapet TOKEN" + jsonResult.getString("token"));
+                            session.setToken(jsonResult.getString("token"));
+                        } else {
+                            String error_message = jsonResult.getString("error_msg");
+                        }
+                    } else {
+
+                    }
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                if(!call.isCanceled()) {
+                    call.cancel();
+                }
+            }
+        });
+
+    }
+
 }

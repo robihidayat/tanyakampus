@@ -26,6 +26,25 @@ public interface ApiInterfaceService {
                                        @Field("name") String name,
                                        @Field("password") String password,
                                        @Field("password_confirmation") String password_confirmation,
-                                       @Field("phone") String phone);
+                                       @Field("phone") String phone,
+                                       @Field("role") String role);
+
+
+    @FormUrlEncoded
+    @POST("/api/registerFirebase")
+    Call<ResponseBody> registerFirebaseRequest(@Field("email") String email,
+                                       @Field("name") String name,
+                                       @Field("token_google") String password,
+                                       @Field("phone") String phone,
+                                       @Field("role") String role);
+
+
+    @FormUrlEncoded
+    @POST("/api/updateProfile")
+    Call<ResponseBody> updateProfile(@Header("Authorization") String token,
+                                     @Field("interest") String interest,
+                                       @Field("phone") String phone,
+                                       @Field("school") String school,
+                                       @Field("department") String department);
 
 }

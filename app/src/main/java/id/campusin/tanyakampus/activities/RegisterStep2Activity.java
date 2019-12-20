@@ -79,7 +79,7 @@ public class RegisterStep2Activity extends AppCompatActivity {
 
 
     private void requestRegister(String name, String email, String phone, String password){
-        apiInterfaceService.registerRequest(email,name, password, password, phone)
+        apiInterfaceService.registerRequest(email,name, password, password, phone, "user")
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
@@ -90,6 +90,7 @@ public class RegisterStep2Activity extends AppCompatActivity {
                                 JSONObject jsonResult = new JSONObject(response.body().string());
                                 if (jsonResult.getString("token") != null){
                                     loading.setVisibility(View.INVISIBLE);
+                                    session.setToken(jsonResult.getString("token"));
                                     session.createLoginSession(
                                             (String)jsonResult.getJSONObject("user").get("name"),
                                             (String)jsonResult.getJSONObject("user").get("email"),
