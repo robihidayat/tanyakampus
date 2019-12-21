@@ -43,8 +43,8 @@ public interface ApiInterfaceService {
     @POST("/api/updateProfile")
     Call<ResponseBody> updateProfile(@Header("Authorization") String token,
                                      @Field("interest") String interest,
-                                       @Field("phone") String phone,
-                                       @Field("school") String school,
-                                       @Field("department") String department);
+                                     @Field("phone") String phone,
+                                     @Field("school") String school,
+                                     @Field("department") String department);
 
 }

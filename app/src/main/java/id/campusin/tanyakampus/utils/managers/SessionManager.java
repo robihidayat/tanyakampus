@@ -59,22 +59,28 @@ public class SessionManager {
      * Create login session
      * */
     public void createLoginSession(String name, String email, String phone, String avatar){
-        // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
-
-        // Storing name in pref
         editor.putString(KEY_NAME, name);
-
-        // Storing email in pref
         editor.putString(KEY_EMAIL, email);
-
-        // Storing phone in pref
         editor.putString(KEY_PHONE, phone);
-
-        // Storing avatar in pref
         editor.putString(KEY_AVATAR, avatar);
+        editor.commit();
+    }
 
-        // commit changes
+    public void profileUser(String name,
+                            String email,
+                            String phone,
+                            String profilePicture,
+                            String interest,
+                            String school,
+                            String department) {
+        editor.putString(KEY_NAME, name);
+        editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_PHONE, phone);
+        editor.putString(KEY_AVATAR, profilePicture);
+        editor.putString(KEY_INTEREST, interest);
+        editor.putString(KEY_SCHOOL, school);
+        editor.putString(KEY_DEPARTMENT, department);
         editor.commit();
     }
 

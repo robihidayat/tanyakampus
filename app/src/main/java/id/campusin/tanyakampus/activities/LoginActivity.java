@@ -88,12 +88,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 if (jsonResult.getString("token") != null){
                                     loading.setVisibility(View.INVISIBLE);
                                     session.setToken(jsonResult.getString("token"));
-                                    session.createLoginSession(
+                                    session.profileUser(
                                             (String)jsonResult.getJSONObject("user").get("name"),
-                                            (String) jsonResult.getJSONObject("user").get("email"),
-                                            (String) jsonResult.getJSONObject("user").get("phone"),
-                                            null
-                                    );
+                                            (String)jsonResult.getJSONObject("user").get("email"),
+                                            (String)jsonResult.getJSONObject("user").get("phone"),
+                                            (String)jsonResult.getJSONObject("user").get("profile_picture"),
+                                            (String)jsonResult.getJSONObject("user").get("interest"),
+                                            (String)jsonResult.getJSONObject("user").get("school"),
+                                            (String)jsonResult.getJSONObject("user").get("department")
+                                           );
                                     Intent intentMain = new Intent(getApplication(), MainActivity.class);
                                     startActivity(intentMain);
                                     finish();

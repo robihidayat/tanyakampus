@@ -96,7 +96,6 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
                     if(command.isSuccessful()){
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateUI(user);
-                        System.out.println("firebase user --> "+ Objects.requireNonNull(user).getEmail());
                     } else {
                         Log.w("Login", "signInWithCredential:failure", command.getException());
                         Toast.makeText(this,"Auth Failed", Toast.LENGTH_LONG).show();
@@ -116,7 +115,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
                 firebaseAuthWithGoogle(Objects.requireNonNull(account));
                 requestRegisterFirebase(account.getDisplayName(), account.getEmail(),"", account.getIdToken());
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            } catch (ApiException | IOException e) {
+            } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);
             }
         }
@@ -154,7 +153,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    private void requestRegisterFirebase(String name, String email, String phone, String password) throws IOException {
+    private void requestRegisterFirebase(String name, String email, String phone, String password) {
         apiInterfaceService.registerFirebaseRequest(email, name, password, phone, "user").enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -162,9 +161,10 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
                     if (response.isSuccessful()){
                         assert response.body() != null;
                         JSONObject jsonResult = new JSONObject(response.body().string());
-                        if (jsonResult.getString("token") != null){
-                            System.out.println("dapet TOKEN" + jsonResult.getString("token"));
+                        if (jsonResult.getString("token") != null) {
+
                             session.setToken(jsonResult.getString("token"));
+
                         } else {
                             String error_message = jsonResult.getString("error_msg");
                         }
