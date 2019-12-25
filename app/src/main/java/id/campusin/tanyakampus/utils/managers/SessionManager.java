@@ -87,7 +87,7 @@ public class SessionManager {
 
     public void setToken( String token){
         // Storing avatar in pref
-        editor.putString(KEY_TOKEN, token);
+        editor.putString(KEY_TOKEN, "Bearer "+token);
         // commit changes
         editor.commit();
     }

@@ -45,7 +45,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout_landing_page_button"
+            android:id="@+id/constraintLayout_update_profile_page_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +53,7 @@
 
 
             <TextView
-                android:id="@+id/textView_register_description"
+                android:id="@+id/textView_update_profile_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -67,7 +67,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView_register_username"
+                android:id="@+id/textView_update_profile_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -76,12 +76,12 @@
                 android:text="Full Name"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView_register_description"
-                app:layout_constraintTop_toBottomOf="@+id/textView_register_description" />
+                app:layout_constraintStart_toStartOf="@+id/textView_update_profile_description"
+                app:layout_constraintTop_toBottomOf="@+id/textView_update_profile_description" />
 
 
             <EditText
-                android:id="@+id/editText_register_fullname"
+                android:id="@+id/editText_update_profile_fullname"
                 android:layout_width="350dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
@@ -89,12 +89,12 @@
                 android:textColor="#000000"
                 android:inputType="textEmailAddress"
                 android:textAlignment="textStart"
-                app:layout_constraintStart_toStartOf="@+id/textView_register_username"
-                app:layout_constraintTop_toBottomOf="@+id/textView_register_username" />
+                app:layout_constraintStart_toStartOf="@+id/textView_update_profile_username"
+                app:layout_constraintTop_toBottomOf="@+id/textView_update_profile_username" />
 
 
             <EditText
-                android:id="@+id/editText_register_email"
+                android:id="@+id/editText_update_profile_email"
                 android:layout_width="350dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
@@ -102,11 +102,11 @@
                 android:textAlignment="textStart"
                 android:textColor="#000000"
                 android:hint="e.g name@email.com"
-                app:layout_constraintStart_toStartOf="@+id/textView_register_email"
-                app:layout_constraintTop_toBottomOf="@+id/textView_register_email" />
+                app:layout_constraintStart_toStartOf="@+id/textView_update_profile_email"
+                app:layout_constraintTop_toBottomOf="@+id/textView_update_profile_email" />
 
             <EditText
-                android:id="@+id/editText_register_phone"
+                android:id="@+id/editText_update_profile_phone"
                 android:layout_width="350dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
@@ -114,11 +114,11 @@
                 android:textColor="#000000"
                 android:textAlignment="textStart"
                 android:hint="e.g 8108102102122"
-                app:layout_constraintStart_toStartOf="@+id/textView_register_phone"
-                app:layout_constraintTop_toBottomOf="@+id/textView_register_phone" />
+                app:layout_constraintStart_toStartOf="@+id/textView_update_profile_phone"
+                app:layout_constraintTop_toBottomOf="@+id/textView_update_profile_phone" />
 
             <TextView
-                android:id="@+id/textView_register_email"
+                android:id="@+id/textView_update_profile_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -127,11 +127,11 @@
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/editText_register_fullname"
-                app:layout_constraintTop_toBottomOf="@+id/editText_register_fullname" />
+                app:layout_constraintStart_toStartOf="@+id/editText_update_profile_fullname"
+                app:layout_constraintTop_toBottomOf="@+id/editText_update_profile_fullname" />
 
             <TextView
-                android:id="@+id/textView_register_phone"
+                android:id="@+id/textView_update_profile_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -140,8 +140,8 @@
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/editText_register_email"
-                app:layout_constraintTop_toBottomOf="@+id/editText_register_email" />
+                app:layout_constraintStart_toStartOf="@+id/editText_update_profile_email"
+                app:layout_constraintTop_toBottomOf="@+id/editText_update_profile_email" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

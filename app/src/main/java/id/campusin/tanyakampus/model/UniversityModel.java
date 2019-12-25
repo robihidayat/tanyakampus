@@ -92,5 +92,14 @@ public class UniversityModel implements Parcelable {
         dest.writeString(this.address);
     }
 
-
+    @Override
+    public String toString() {
+        return "UniversityModelResponse{" +
+                "posterPath='" + posterPath + '\'' +
+                ", title='" + title + '\'' +
+                ", rate=" + rate +
+                ", description='" + description + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

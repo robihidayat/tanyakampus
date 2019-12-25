@@ -1,5 +1,6 @@
 package id.campusin.tanyakampus.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -20,20 +22,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.Objects;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.helper.ApiInterfaceService;
 import id.campusin.tanyakampus.helper.RetrofitUtils;
+import id.campusin.tanyakampus.model.response.RegisterFirebaseResponse;
 import id.campusin.tanyakampus.utils.managers.SessionManager;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class LandingPage extends AppCompatActivity implements View.OnClickListener {
 
@@ -48,6 +48,7 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        session = new SessionManager(getApplicationContext());
         setTheme(R.style.MainTheme);
         setContentView(R.layout.activity_landing_page);
         mAuth = FirebaseAuth.getInstance();
@@ -57,7 +58,6 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
         setGooglePlusButtonText(signInButtonGoogle,  "CONTINUE WITH GOOGLE");
         signInButtonGoogle.setOnClickListener(this);
         apiInterfaceService = RetrofitUtils.apiService();
-        session = new SessionManager(getApplicationContext());
 
         GoogleSignInOptions gso =  new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -112,9 +112,9 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
+                assert account != null;
                 firebaseAuthWithGoogle(Objects.requireNonNull(account));
-                requestRegisterFirebase(account.getDisplayName(), account.getEmail(),"", account.getIdToken());
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                requestRegisterFirebase(account.getDisplayName(), account.getEmail(),"", account.getIdToken(), Objects.requireNonNull(account.getPhotoUrl()).toString());
             } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);
             }
@@ -153,37 +153,35 @@ public class LandingPage extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    private void requestRegisterFirebase(String name, String email, String phone, String password) {
-        apiInterfaceService.registerFirebaseRequest(email, name, password, phone, "user").enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    if (response.isSuccessful()){
-                        assert response.body() != null;
-                        JSONObject jsonResult = new JSONObject(response.body().string());
-                        if (jsonResult.getString("token") != null) {
-
-                            session.setToken(jsonResult.getString("token"));
-
-                        } else {
-                            String error_message = jsonResult.getString("error_msg");
-                        }
-                    } else {
+    @SuppressLint("CheckResult")
+    private void requestRegisterFirebase(String name, String email, String phone, String password, String avatar) {
+        Observable<RegisterFirebaseResponse> response = apiInterfaceService.registerFirebaseRequestObservable(email, name, password, phone, "user", avatar);
+        response.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter(result-> !result.getToken().isEmpty())
+                .map(RegisterFirebaseResponse::getToken)
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
                     }
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
 
-            }
+                    @Override
+                    public void onNext(String s) {
+                        System.out.println("sessionnya "+ s);
+                        session.setToken(s);
+                    }
 
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                if(!call.isCanceled()) {
-                    call.cancel();
-                }
-            }
-        });
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                    }
+                });
 
     }
 

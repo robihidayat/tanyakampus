@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,17 +45,17 @@ public class UpdateProfileActivity extends AppCompatActivity {
         setTheme(R.style.MainTheme);
         setContentView(R.layout.activity_update_profile);
         session = new SessionManager(getApplicationContext());
-        editEmail = findViewById(R.id.EditText_update_profile_email);
+        editEmail = findViewById(R.id.editText_update_profile_email);
         editEmail.setHint(session.getUserDetails().get("email") != null ? session.getUserDetails().get("email") : " ex. email@email.com");
-        editPhone = findViewById(R.id.EditText_update_profile_phone);
+        editPhone = findViewById(R.id.editText_update_profile_phone);
         editPhone.setHint(session.getUserDetails().get("phone") != null ? session.getUserDetails().get("phone") : "ex. 087382921");
-        editInterest = findViewById(R.id.EditText_update_profile_interest);
+        editInterest = findViewById(R.id.editText_update_profile_interest);
         editInterest.setHint(session.getUserDetails().get("interest") != null ? session.getUserDetails().get("interest") : "ex. IPA");
-        editDepartment = findViewById(R.id.EditText_update_profile_department);
+        editDepartment = findViewById(R.id.editText_update_profile_department);
         editDepartment.setHint(session.getUserDetails().get("department") != null ? session.getUserDetails().get("department"): " ex. ILKOM");
-        editName = findViewById(R.id.EditText_update_profile_name);
+        editName = findViewById(R.id.editText_update_profile_fullname);
         editName.setHint(session.getUserDetails().get("name") != null ? session.getUserDetails().get("name") : "ex. name");
-        editSchool = findViewById(R.id.EditText_update_profile_school);
+        editSchool = findViewById(R.id.editText_update_profile_school);
         editSchool.setHint(session.getUserDetails().get("school") != null ? session.getUserDetails().get("school") :"ex. School");
 
         buttonSave = findViewById(R.id.FloatingActionButton_profile_edit);
@@ -63,7 +64,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         Glide.with(this).load(session.getUserDetails().get("avatar"))
                 .placeholder(R.drawable.profile_lazzy_mode)
-                .into((ImageView) findViewById(R.id.CircleImageView_update_profile_ambassador));
+                .into((ImageView) findViewById(R.id.CircleImageView_update_profile_avatar));
 
         apiInterfaceService = RetrofitUtils.apiService();
 
@@ -71,7 +72,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
             if(editSchool.getText() == null || editPhone.getText() == null || editInterest.getText() == null || editDepartment.getText() == null){
                 alert.showAlertDialog(this, "error ", "Silakan lengkapi seluruh data", false);
             }
-            updateProfile(editName.getText().toString(), editName.getText().toString(), editDepartment.getText().toString(), editInterest.getText().toString(), editSchool.getText().toString());
+            updateProfile(editName.getText().toString(), editPhone.getText().toString(), editDepartment.getText().toString(), editInterest.getText().toString(), editSchool.getText().toString());
             loading.setVisibility(View.VISIBLE);
 
         });
@@ -82,13 +83,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
 
     private void updateProfile(String name, String phone, String department, String interest, String school){
-        System.out.println("dapet Token "+ session.getToken());
         apiInterfaceService.updateProfile(
-                "Bearer "+session.getToken(),
+                session.getToken(),
                 interest,
                 phone,
                 school,
-                department).enqueue(new Callback<ResponseBody>() {
+                department,
+                null)
+                .enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
@@ -99,13 +101,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
                             session.profileUser(
                                     (String)jsonResult.getJSONObject("user").get("name"),
                                     (String)jsonResult.getJSONObject("user").get("email"),
-                                    (String)jsonResult.getJSONObject("user").get("phone"),
-                                    (String)jsonResult.getJSONObject("user").get("profile_picture"),
+                                    jsonResult.getJSONObject("user").get("phone") != null ? (String)jsonResult.getJSONObject("user").get("phone") : null,
+                                    jsonResult.getJSONObject("user").get("profile_picture") != null ? (String)jsonResult.getJSONObject("user").get("profile_picture") : null,
                                     (String)jsonResult.getJSONObject("user").get("interest"),
                                     (String)jsonResult.getJSONObject("user").get("school"),
                                     (String)jsonResult.getJSONObject("user").get("department")
                             );
                             loading.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getApplicationContext(), "Update Success", Toast.LENGTH_LONG).show();
                         } else {
                             String error_message = jsonResult.getString("error_msg");
                         }

@@ -40,6 +40,9 @@ allprojects {
             dirs 'libs'
         }
         mavenCentral()
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
 
     }
 }

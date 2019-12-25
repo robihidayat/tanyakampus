@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout_landing_page_background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout_landing_page_button"
+            android:id="@+id/constraintLayout_update_profile_page_button"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:background="#ffffff"
@@ -59,7 +59,7 @@
             app:layout_constraintHeight_percent="0.12">
 
             <TextView
-                android:id="@+id/textView_register_description"
+                android:id="@+id/textView_update_profile_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -95,8 +95,8 @@
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView_register_description"
-                app:layout_constraintTop_toBottomOf="@+id/textView_register_description" />
+                app:layout_constraintStart_toStartOf="@+id/textView_update_profile_description"
+                app:layout_constraintTop_toBottomOf="@+id/textView_update_profile_description" />
 
             <EditText
                 android:id="@+id/editText_login_username"

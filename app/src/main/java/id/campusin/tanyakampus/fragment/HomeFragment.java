@@ -1,5 +1,6 @@
 package id.campusin.tanyakampus.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.activities.PrivateMessageActivity;
@@ -24,15 +26,29 @@ import id.campusin.tanyakampus.adapter.CampusNewAdapter;
 import id.campusin.tanyakampus.adapter.DepartmentAdapter;
 import id.campusin.tanyakampus.adapter.TipsAndTricksAdapter;
 import id.campusin.tanyakampus.adapter.UniversityAdapter;
+import id.campusin.tanyakampus.helper.ApiInterfaceService;
+import id.campusin.tanyakampus.helper.RetrofitUtils;
 import id.campusin.tanyakampus.model.CampusNewsModel;
 import id.campusin.tanyakampus.model.DepartmentModel;
 import id.campusin.tanyakampus.model.TipsAndtricksModel;
-import id.campusin.tanyakampus.model.UniversityModel;
+import id.campusin.tanyakampus.model.response.DataUniversityResponse;
+import id.campusin.tanyakampus.model.response.UniversityModelResponse;
+import id.campusin.tanyakampus.utils.managers.SessionManager;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class HomeFragment extends Fragment {
 
     private CardView searchCard;
     private ImageView imageViewSearch;
+    private ApiInterfaceService apiInterfaceService;
+    private SessionManager session;
+    private List<DataUniversityResponse> dataUniversityResponses;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,6 +63,9 @@ public class HomeFragment extends Fragment {
 
         searchCard = view.findViewById(R.id.cardView_search);
         imageViewSearch = view.findViewById(R.id.Image_view_message);
+        apiInterfaceService = RetrofitUtils.apiService();
+        session = new SessionManager(getContext());
+        getUniversity(view);
 
         MultiSnapRecyclerView departmentRecyclerView = view.findViewById(R.id.recycler_view_department);
         LinearLayoutManager departmentManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -54,11 +73,7 @@ public class HomeFragment extends Fragment {
         departmentRecyclerView.setLayoutManager(departmentManager);
         departmentRecyclerView.setAdapter(departmentAdapter);
 
-        UniversityAdapter firstAdapter = new UniversityAdapter(getContext(), getUniversity());
-        MultiSnapRecyclerView firstRecyclerView = view.findViewById(R.id.recycler_view_university);
-        LinearLayoutManager firstManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        firstRecyclerView.setLayoutManager(firstManager);
-        firstRecyclerView.setAdapter(firstAdapter);
+
 
         MultiSnapRecyclerView ambassadorRecycle = view.findViewById(R.id.recycler_view_ambassador);
         LinearLayoutManager ambassadorManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -84,7 +99,7 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
-        imageViewSearch.setOnClickListener( v->{
+        imageViewSearch.setOnClickListener( v-> {
             Intent intent = new Intent(getContext(), PrivateMessageActivity.class);
             startActivity(intent);
         });
@@ -132,17 +147,44 @@ public class HomeFragment extends Fragment {
         return models;
     }
 
-    private List<UniversityModel> getUniversity(){
-        List<UniversityModel> university = new ArrayList<>();
-        String description = "Universitas ini adalah universitas yang sayang bagus sekali, tapi sampai bagusnya saya sampai tidak tahu harus berkata apa" +
-                "semoga kedepannya";
-        university.add(new UniversityModel("https://firebasestorage.googleapis.com/v0/b/tanyakampus-38f8a.appspot.com/o/campus_logo%2Flogo_ugm.png?alt=media&token=44393b09-25fd-44c1-b142-f6b76c3022d6", "Universitas Gadjah Mada", 1, description, "Bulaksumur, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"));
-        university.add(new UniversityModel("https://firebasestorage.googleapis.com/v0/b/tanyakampus-38f8a.appspot.com/o/campus_logo%2Flogo_ui.png?alt=media&token=6bc3d198-fafb-49a2-b727-8b1f1c282a79", "Universitas Indonesia", 2,description,"Bulaksumur, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"));
-        university.add(new UniversityModel("https://firebasestorage.googleapis.com/v0/b/tanyakampus-38f8a.appspot.com/o/campus_logo%2Flogo_unnes.png?alt=media&token=910f9e64-e021-4367-ac79-13c90d2e36ec", "Universitas Sebelas Maret", 2,description,"Bulaksumur, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"));
-        university.add(new UniversityModel("https://firebasestorage.googleapis.com/v0/b/tanyakampus-38f8a.appspot.com/o/campus_logo%2Flogo_unnes.png?alt=media&token=910f9e64-e021-4367-ac79-13c90d2e36ec", "Universitas Palembang", 2,description,"Bulaksumur, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"));
-        university.add(new UniversityModel("https://firebasestorage.googleapis.com/v0/b/tanyakampus-38f8a.appspot.com/o/campus_logo%2Flogo_unnes.png?alt=media&token=910f9e64-e021-4367-ac79-13c90d2e36ec", "Universitas Negri Cirebon", 2,description, "Bulaksumur, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"));
-        university.add(new UniversityModel("https://firebasestorage.googleapis.com/v0/b/tanyakampus-38f8a.appspot.com/o/campus_logo%2Flogo_unnes.png?alt=media&token=910f9e64-e021-4367-ac79-13c90d2e36ec", "Universitas Negri Semarang", 2,description, "Bulaksumur, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"));
-        return university;
+    private void handleResults(List<DataUniversityResponse> response, View view){
+        UniversityAdapter firstAdapter = new UniversityAdapter(getContext(), response);
+        MultiSnapRecyclerView firstRecyclerView = view.findViewById(R.id.recycler_view_university);
+        LinearLayoutManager firstManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        firstRecyclerView.setLayoutManager(firstManager);
+        firstRecyclerView.setAdapter(firstAdapter);
+    }
+
+    private void handleError(Throwable t) {
+        System.out.println("handleError disini ");
+    }
+
+    private void getUniversity(View view){
+        Observable<UniversityModelResponse> response = apiInterfaceService.universityListRequestObservable(session.getToken());
+        response.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<UniversityModelResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(UniversityModelResponse response) {
+                        handleResults(null, view);
+                        dataUniversityResponses = response.getData();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        handleError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        handleResults(dataUniversityResponses, view);
+                    }
+                });
     }
 
 }

@@ -29,9 +29,9 @@ public class RegisterStep1Activity extends AppCompatActivity implements View.OnC
         buttonNext = findViewById(R.id.button_register_action_continue);
         buttonNext.setOnClickListener(this);
 
-        editTextName = findViewById(R.id.editText_register_fullname);
-        editTextEmail = findViewById(R.id.editText_register_email);
-        editTextPhone = findViewById(R.id.editText_register_phone);
+        editTextName = findViewById(R.id.editText_update_profile_fullname);
+        editTextEmail = findViewById(R.id.editText_update_profile_email);
+        editTextPhone = findViewById(R.id.editText_update_profile_phone);
 
     }
 
