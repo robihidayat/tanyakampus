@@ -167,6 +167,12 @@ public class SessionManager {
         _context.startActivity(i);
     }
 
+    public void clearSession(){
+        editor.clear();
+        editor.commit();
+    }
+
+
     /**
      * Quick check for login
      * **/

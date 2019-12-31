@@ -2,6 +2,8 @@ package id.campusin.tanyakampus.helper;
 
 import id.campusin.tanyakampus.model.response.RegisterFirebaseResponse;
 import id.campusin.tanyakampus.model.response.UniversityModelResponse;
+import id.campusin.tanyakampus.model.response.UserModel;
+import id.campusin.tanyakampus.model.response.UserResponse;
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -23,6 +25,10 @@ public interface ApiInterfaceService {
     Call<ResponseBody> userRequest(@Header("Authorization") String token);
 
 
+    @GET("/api/user")
+    Observable<UserResponse> userRequestObservable(@Header("Authorization") String token);
+
+
     @GET("/api/university")
     Call<ResponseBody> universityListRequest(@Header("Authorization") String token);
 
@@ -38,16 +44,6 @@ public interface ApiInterfaceService {
                                        @Field("password_confirmation") String password_confirmation,
                                        @Field("phone") String phone,
                                        @Field("role") String role);
-
-
-    @FormUrlEncoded
-    @POST("/api/registerFirebase")
-    Call<ResponseBody> registerFirebaseRequest(@Field("email") String email,
-                                               @Field("name") String name,
-                                               @Field("token_google") String password,
-                                               @Field("phone") String phone,
-                                               @Field("role") String role,
-                                               @Field("profile_picture") String profile_picture);
 
 
 

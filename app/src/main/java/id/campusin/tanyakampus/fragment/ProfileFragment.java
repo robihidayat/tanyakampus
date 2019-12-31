@@ -98,6 +98,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void signOut() {
         mAuth.signOut();
         mGoogleSignInClient.signOut();
-        session.logoutUser();
+        session.clearSession();
     }
 }

@@ -7,7 +7,7 @@ public class RegisterFirebaseResponse {
     @SerializedName("token")
     private String token;
     @SerializedName("useer")
-    private UserResponse user;
+    private UserModel user;
 
     public String getToken() {
         return token;
@@ -17,11 +17,11 @@ public class RegisterFirebaseResponse {
         this.token = token;
     }
 
-    public UserResponse getUser() {
+    public UserModel getUser() {
         return user;
     }
 
-    public void setUser(UserResponse user) {
+    public void setUser(UserModel user) {
         this.user = user;
     }
 }
