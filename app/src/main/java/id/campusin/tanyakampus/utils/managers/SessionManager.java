@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import java.util.HashMap;
 
 import id.campusin.tanyakampus.activities.LoginActivity;
+import id.campusin.tanyakampus.model.response.LoginModelResponse;
 
 public class SessionManager {
 
@@ -84,6 +85,16 @@ public class SessionManager {
         editor.commit();
     }
 
+    public void setProfile(LoginModelResponse profile){
+        editor.putString(KEY_NAME, profile.getUser().getName());
+        editor.putString(KEY_EMAIL, profile.getUser().getEmail());
+        editor.putString(KEY_PHONE, profile.getUser().getPhone());
+        editor.putString(KEY_AVATAR, profile.getUser().getProfilePicture());
+        editor.putString(KEY_INTEREST, profile.getUser().getInterest());
+        editor.putString(KEY_SCHOOL, profile.getUser().getSchool());
+        editor.putString(KEY_DEPARTMENT, profile.getUser().getDepartment());
+        editor.commit();
+    }
 
     public void setToken( String token){
         // Storing avatar in pref

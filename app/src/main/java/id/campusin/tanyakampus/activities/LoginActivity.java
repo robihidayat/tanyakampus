@@ -15,9 +15,16 @@ import java.io.IOException;
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.helper.ApiInterfaceService;
 import id.campusin.tanyakampus.helper.RetrofitUtils;
+import id.campusin.tanyakampus.model.response.LoginModelResponse;
+import id.campusin.tanyakampus.model.response.UserResponse;
 import id.campusin.tanyakampus.utils.PredicateUtils;
 import id.campusin.tanyakampus.utils.managers.AlertDialogManager;
 import id.campusin.tanyakampus.utils.managers.SessionManager;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -75,49 +82,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
          }
     }
 
-    private void requestLogin(String username, String password){
-        apiInterfaceService.loginRequest(username, password)
-                .enqueue(new Callback<ResponseBody>() {
+    private void requestLogin(String username, String password) {
+       apiInterfaceService.loginRequestObservable(username, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<LoginModelResponse>() {
                     @Override
-                    public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
-                        buttonLogin.setEnabled(true);
-                        try {
-                            if (response.isSuccessful()){
-                                assert response.body() != null;
-                                JSONObject jsonResult = new JSONObject(response.body().string());
-                                if (jsonResult.getString("token") != null){
-                                    loading.setVisibility(View.INVISIBLE);
-                                    session.setToken(jsonResult.getString("token"));
-                                    session.profileUser(
-                                            (String)jsonResult.getJSONObject("user").get("name"),
-                                            (String)jsonResult.getJSONObject("user").get("email"),
-                                            (String)jsonResult.getJSONObject("user").get("phone"),
-                                            (String)jsonResult.getJSONObject("user").get("profile_picture"),
-                                            (String)jsonResult.getJSONObject("user").get("interest"),
-                                            (String)jsonResult.getJSONObject("user").get("school"),
-                                            (String)jsonResult.getJSONObject("user").get("department")
-                                           );
-                                    Intent intentMain = new Intent(getApplication(), MainActivity.class);
-                                    startActivity(intentMain);
-                                    finish();
-                                } else {
-                                    alert.showAlertDialog(LoginActivity.this, "Login failed..", "Username/Password is incorrect", false);
-                                }
-                            } else {
-                                loading.setVisibility(View.INVISIBLE);
-                                alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
-                            }
-                        } catch (JSONException | IOException e) {
-                            e.printStackTrace();
-                        }
+                    public void onSubscribe(Disposable d) {
+
                     }
+
                     @Override
-                    public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
+                    public void onNext(LoginModelResponse loginModelResponse) {
+                        buttonLogin.setEnabled(false);
+                        session.setProfile(loginModelResponse);
+                        session.setToken(loginModelResponse.getToken());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        loading.setVisibility(View.INVISIBLE);
                         buttonLogin.setEnabled(true);
-                        if(!call.isCanceled()) {
-                            call.cancel();
-                        }
-                        Log.e("debug", "onFailure: ERROR > " + t.toString());
+                        alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        loading.setVisibility(View.INVISIBLE);
+                        Intent intentMain = new Intent(getApplication(), MainActivity.class);
+                        startActivity(intentMain);
+                        finish();
                     }
                 });
     }

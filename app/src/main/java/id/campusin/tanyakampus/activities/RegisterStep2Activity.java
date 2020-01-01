@@ -21,8 +21,14 @@ import java.io.IOException;
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.helper.ApiInterfaceService;
 import id.campusin.tanyakampus.helper.RetrofitUtils;
+import id.campusin.tanyakampus.model.response.RegisterFirebaseResponse;
 import id.campusin.tanyakampus.utils.PredicateUtils;
 import id.campusin.tanyakampus.utils.managers.SessionManager;
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,6 +85,39 @@ public class RegisterStep2Activity extends AppCompatActivity {
 
 
     private void requestRegister(String name, String email, String phone, String password){
+        apiInterfaceService.registerRequestObservable(email,name, password, password, phone, "user")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<RegisterFirebaseResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(RegisterFirebaseResponse registerFirebaseResponse) {
+                        buttonNext.setEnabled(false);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        loading.setVisibility(View.INVISIBLE);
+
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        buttonNext.setEnabled(true);
+
+                    }
+                });
+
+
+
+
+
         apiInterfaceService.registerRequest(email,name, password, password, phone, "user")
                 .enqueue(new Callback<ResponseBody>() {
                     @Override

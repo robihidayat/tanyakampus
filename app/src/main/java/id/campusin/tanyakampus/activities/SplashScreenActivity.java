@@ -16,10 +16,8 @@ import java.util.Objects;
 
 import id.campusin.tanyakampus.BuildConfig;
 import id.campusin.tanyakampus.R;
-import id.campusin.tanyakampus.fragment.HomeFragment;
 import id.campusin.tanyakampus.helper.ApiInterfaceService;
 import id.campusin.tanyakampus.helper.RetrofitUtils;
-import id.campusin.tanyakampus.model.response.UserModel;
 import id.campusin.tanyakampus.model.response.UserResponse;
 import id.campusin.tanyakampus.utils.managers.SessionManager;
 import io.reactivex.Observable;
