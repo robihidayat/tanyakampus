@@ -70,14 +70,12 @@ public class SessionManager {
     public void profileUser(String name,
                             String email,
                             String phone,
-                            String profilePicture,
                             String interest,
                             String school,
                             String department) {
         editor.putString(KEY_NAME, name);
         editor.putString(KEY_EMAIL, email);
         editor.putString(KEY_PHONE, phone);
-        editor.putString(KEY_AVATAR, profilePicture);
         editor.putString(KEY_INTEREST, interest);
         editor.putString(KEY_SCHOOL, school);
         editor.putString(KEY_DEPARTMENT, department);
@@ -85,6 +83,7 @@ public class SessionManager {
     }
 
     public void setProfile(LoginModelResponse profile){
+
         editor.putString(KEY_NAME, profile.getUser().getName());
         editor.putString(KEY_EMAIL, profile.getUser().getEmail());
         editor.putString(KEY_PHONE, profile.getUser().getPhone());
@@ -93,6 +92,7 @@ public class SessionManager {
         editor.putString(KEY_SCHOOL, profile.getUser().getSchool());
         editor.putString(KEY_DEPARTMENT, profile.getUser().getDepartment());
         editor.commit();
+
     }
 
     public void setToken( String token){

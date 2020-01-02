@@ -1,7 +1,7 @@
 package id.campusin.tanyakampus.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,20 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.helper.ApiInterfaceService;
 import id.campusin.tanyakampus.helper.RetrofitUtils;
+import id.campusin.tanyakampus.model.response.LoginModelResponse;
 import id.campusin.tanyakampus.utils.managers.AlertDialogManager;
 import id.campusin.tanyakampus.utils.managers.SessionManager;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
@@ -69,11 +65,17 @@ public class UpdateProfileActivity extends AppCompatActivity {
         apiInterfaceService = RetrofitUtils.apiService();
 
         buttonSave.setOnClickListener( v-> {
-            if(editSchool.getText() == null || editPhone.getText() == null || editInterest.getText() == null || editDepartment.getText() == null){
+        if( editSchool.getText() == null || editSchool.getText().toString().equals("") ||
+                editPhone.getText() == null || editPhone.getText().toString().equals("") ||
+                editInterest.getText() == null || editInterest.getText().toString().equals("") |
+                editDepartment.getText() == null  || editDepartment.getText().toString().equals("")) {
+
                 alert.showAlertDialog(this, "error ", "Silakan lengkapi seluruh data", false);
-            }
-            updateProfile(editName.getText().toString(), editPhone.getText().toString(), editDepartment.getText().toString(), editInterest.getText().toString(), editSchool.getText().toString());
+
+        } else {
             loading.setVisibility(View.VISIBLE);
+            updateProfile(editPhone.getText().toString(), editDepartment.getText().toString(), editInterest.getText().toString(), editSchool.getText().toString());
+        }
 
         });
 
@@ -82,54 +84,49 @@ public class UpdateProfileActivity extends AppCompatActivity {
     }
 
 
-    private void updateProfile(String name, String phone, String department, String interest, String school){
-        apiInterfaceService.updateProfile(
-                session.getToken(),
-                interest,
-                phone,
-                school,
-                department,
-                null)
-                .enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    if (response.isSuccessful()){
-                        assert response.body() != null;
-                        JSONObject jsonResult = new JSONObject(response.body().string());
-                        if (jsonResult.getString("user") != null){
-                            session.profileUser(
-                                    (String)jsonResult.getJSONObject("user").get("name"),
-                                    (String)jsonResult.getJSONObject("user").get("email"),
-                                    jsonResult.getJSONObject("user").get("phone") != null ? (String)jsonResult.getJSONObject("user").get("phone") : null,
-                                    jsonResult.getJSONObject("user").get("profile_picture") != null ? (String)jsonResult.getJSONObject("user").get("profile_picture") : null,
-                                    (String)jsonResult.getJSONObject("user").get("interest"),
-                                    (String)jsonResult.getJSONObject("user").get("school"),
-                                    (String)jsonResult.getJSONObject("user").get("department")
-                            );
-                            loading.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getApplicationContext(), "Update Success", Toast.LENGTH_LONG).show();
-                        } else {
-                            String error_message = jsonResult.getString("error_msg");
-                        }
-                    } else {
+    private void updateProfile(String phone, String department, String interest, String school){
+        apiInterfaceService.updateProfileObservable(session.getToken(), interest, phone, school, department)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Observer<LoginModelResponse>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
 
-                    }
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
+                            }
+
+                            @Override
+                            public void onNext(LoginModelResponse userResponse) {
+                                session.profileUser(
+                                        userResponse.getUser().getName(),
+                                        userResponse.getUser().getEmail(),
+                                        userResponse.getUser().getPhone(),
+                                        userResponse.getUser().getInterest(),
+                                        userResponse.getUser().getSchool(),
+                                        userResponse.getUser().getDepartment()
+                                );
+                            }
 
 
-            }
+                            @Override
+                            public void onError(Throwable e) {
+                                Toast.makeText(getApplicationContext(), "Update Error", Toast.LENGTH_LONG).show();
+                                loading.setVisibility(View.INVISIBLE);
+                            }
 
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                if(!call.isCanceled()) {
-                    call.cancel();
-                }
-                Log.e("debug", "onFailure: ERROR > " + t.toString());
-            }
-        });
 
+                            @Override
+                            public void onComplete() {
+                                Toast.makeText(getApplicationContext(), "Update Success", Toast.LENGTH_LONG).show();
+                                loading.setVisibility(View.INVISIBLE);
+
+                            }
+                        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(UpdateProfileActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

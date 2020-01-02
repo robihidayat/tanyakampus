@@ -1,6 +1,5 @@
 package id.campusin.tanyakampus.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.activities.PrivateMessageActivity;

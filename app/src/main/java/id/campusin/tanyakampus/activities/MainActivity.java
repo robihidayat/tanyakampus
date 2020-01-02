@@ -11,8 +11,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.fragment.AmbassadorFragment;
 import id.campusin.tanyakampus.fragment.AskFragment;
-import id.campusin.tanyakampus.fragment.ProfileFragment;
 import id.campusin.tanyakampus.fragment.HomeFragment;
+import id.campusin.tanyakampus.fragment.ProfileFragment;
 import id.campusin.tanyakampus.fragment.QuestionAnswerFragment;
 
 public class MainActivity extends AppCompatActivity {

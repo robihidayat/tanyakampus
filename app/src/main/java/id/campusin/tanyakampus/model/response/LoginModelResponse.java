@@ -6,7 +6,7 @@ public class LoginModelResponse {
 
     @SerializedName("token")
     private String token;
-    @SerializedName("useer")
+    @SerializedName("user")
     private UserModel user;
     @SerializedName("roles")
     private Object roles;

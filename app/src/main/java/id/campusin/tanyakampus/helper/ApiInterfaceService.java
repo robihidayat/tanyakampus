@@ -74,4 +74,13 @@ public interface ApiInterfaceService {
                                      @Field("department") String department,
                                      @Field("avatar") String avatar);
 
+
+    @FormUrlEncoded
+    @POST("/api/updateProfile")
+    Observable<LoginModelResponse> updateProfileObservable(@Header("Authorization") String token,
+                                     @Field("interest") String interest,
+                                     @Field("phone") String phone,
+                                     @Field("school") String school,
+                                     @Field("department") String department);
+
 }
