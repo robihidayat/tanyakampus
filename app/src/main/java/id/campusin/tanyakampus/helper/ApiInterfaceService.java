@@ -30,6 +30,12 @@ public interface ApiInterfaceService {
 
 
     @FormUrlEncoded
+    @POST("/api/validate/email")
+    Observable<ResponseBody> validateEmail(@Field("email") String email,
+                                     @Field("phone") String phone);
+
+
+    @FormUrlEncoded
     @POST("/api/register")
     Call<ResponseBody> registerRequest(@Field("email") String email,
                                        @Field("name") String name,

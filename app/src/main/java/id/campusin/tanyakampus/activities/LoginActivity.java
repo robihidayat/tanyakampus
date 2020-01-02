@@ -2,33 +2,24 @@ package id.campusin.tanyakampus.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+
 import androidx.appcompat.app.AppCompatActivity;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.IOException;
+
 import id.campusin.tanyakampus.R;
 import id.campusin.tanyakampus.helper.ApiInterfaceService;
 import id.campusin.tanyakampus.helper.RetrofitUtils;
 import id.campusin.tanyakampus.model.response.LoginModelResponse;
-import id.campusin.tanyakampus.model.response.UserResponse;
 import id.campusin.tanyakampus.utils.PredicateUtils;
 import id.campusin.tanyakampus.utils.managers.AlertDialogManager;
 import id.campusin.tanyakampus.utils.managers.SessionManager;
-import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
